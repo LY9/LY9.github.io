@@ -117,7 +117,7 @@
 <meta name="description" content="请在场的各位给个面子.——香克斯">
 <meta property="og:type" content="website">
 <meta property="og:title" content="100斤的博客">
-<meta property="og:url" content="http://yoursite.com/page/7/index.html">
+<meta property="og:url" content="/page/7/index.html">
 <meta property="og:site_name" content="100斤的博客">
 <meta property="og:description" content="请在场的各位给个面子.——香克斯">
 <meta property="og:locale" content="zh-Hans">
@@ -151,7 +151,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/page/7/"/>
+  <link rel="canonical" href="/page/7/"/>
 
 
 
@@ -328,7 +328,198 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/19/第一次搬家小记.html">
+    <link itemprop="mainEntityOfPage" href="/2017/08/21/初识数据库脏读.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="100斤">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="100斤的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/21/初识数据库脏读.html" itemprop="url">初始数据库脏读</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-21T01:26:00+08:00">
+                2017-08-21
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-12-15T16:24:54+08:00">
+                2017-12-15
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/talk/" itemprop="url" rel="index">
+                    <span itemprop="name">技术杂谈</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2017/08/21/初识数据库脏读.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::/2017/08/21/初识数据库脏读.html" class="cy_cmt_count" data-xid="2017/08/21/初识数据库脏读.html" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>平时数据库用的少,掌握的知识仅限理论,一直想提高一下.项目上线后稍微轻松了一点,抓住了后台的兄弟学习(聊天).第一次见识到了后台的数据库脏读.</p>
+<p>后台有一个接口,是一系列开关的配置值,每次更新的时候会先删除数据库中的配置,然后插入新的配置.在删除配置时,如果缓存失效,从数据库拿,就会取到空作为缓存,然后问题就来了.缓存失一个失效时间,在这个时间内,更新的配置值都不会生效.</p>
+<p>虽然原理很简单,一旦没处理好,这也是后台的一个事故.</p>
+<p>以上.</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="/2017/08/19/第一次搬家小记.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="100斤">
@@ -414,7 +605,7 @@
               </span>
               
                 <a href="/2017/08/19/第一次搬家小记.html#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://yoursite.com/2017/08/19/第一次搬家小记.html" class="cy_cmt_count" data-xid="2017/08/19/第一次搬家小记.html" itemprop="commentsCount" ></span>
+                  <span id="url::/2017/08/19/第一次搬家小记.html" class="cy_cmt_count" data-xid="2017/08/19/第一次搬家小记.html" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -521,7 +712,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/19/ubuntu拨号上网.html">
+    <link itemprop="mainEntityOfPage" href="/2017/08/19/ubuntu拨号上网.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="100斤">
@@ -607,7 +798,7 @@
               </span>
               
                 <a href="/2017/08/19/ubuntu拨号上网.html#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://yoursite.com/2017/08/19/ubuntu拨号上网.html" class="cy_cmt_count" data-xid="2017/08/19/ubuntu拨号上网.html" itemprop="commentsCount" ></span>
+                  <span id="url::/2017/08/19/ubuntu拨号上网.html" class="cy_cmt_count" data-xid="2017/08/19/ubuntu拨号上网.html" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -732,7 +923,7 @@ ifconfig ppp0
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/16/谈接口设计.html">
+    <link itemprop="mainEntityOfPage" href="/2017/08/16/谈接口设计.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="100斤">
@@ -818,7 +1009,7 @@ ifconfig ppp0
               </span>
               
                 <a href="/2017/08/16/谈接口设计.html#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://yoursite.com/2017/08/16/谈接口设计.html" class="cy_cmt_count" data-xid="2017/08/16/谈接口设计.html" itemprop="commentsCount" ></span>
+                  <span id="url::/2017/08/16/谈接口设计.html" class="cy_cmt_count" data-xid="2017/08/16/谈接口设计.html" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -927,7 +1118,7 @@ ifconfig ppp0
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/16/android-studio的坑二.html">
+    <link itemprop="mainEntityOfPage" href="/2017/08/16/android-studio的坑二.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="100斤">
@@ -1013,7 +1204,7 @@ ifconfig ppp0
               </span>
               
                 <a href="/2017/08/16/android-studio的坑二.html#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://yoursite.com/2017/08/16/android-studio的坑二.html" class="cy_cmt_count" data-xid="2017/08/16/android-studio的坑二.html" itemprop="commentsCount" ></span>
+                  <span id="url::/2017/08/16/android-studio的坑二.html" class="cy_cmt_count" data-xid="2017/08/16/android-studio的坑二.html" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -1122,7 +1313,7 @@ ifconfig ppp0
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/16/换一个目录内存省16M内存.html">
+    <link itemprop="mainEntityOfPage" href="/2017/08/16/换一个目录内存省16M内存.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="100斤">
@@ -1208,7 +1399,7 @@ ifconfig ppp0
               </span>
               
                 <a href="/2017/08/16/换一个目录内存省16M内存.html#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://yoursite.com/2017/08/16/换一个目录内存省16M内存.html" class="cy_cmt_count" data-xid="2017/08/16/换一个目录内存省16M内存.html" itemprop="commentsCount" ></span>
+                  <span id="url::/2017/08/16/换一个目录内存省16M内存.html" class="cy_cmt_count" data-xid="2017/08/16/换一个目录内存省16M内存.html" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -1306,198 +1497,6 @@ ifconfig ppp0
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/11/记android-studio的一个坑.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="100斤">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="100斤的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/11/记android-studio的一个坑.html" itemprop="url">记android studio的一个坑</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-11T02:27:46+08:00">
-                2017-08-11
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2017-12-15T16:24:54+08:00">
-                2017-12-15
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2017/08/11/记android-studio的一个坑.html#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://yoursite.com/2017/08/11/记android-studio的一个坑.html" class="cy_cmt_count" data-xid="2017/08/11/记android-studio的一个坑.html" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>android开发的时候如果需要开发相似的界面,可能会直接copy一份然后改一改,调一调.</p>
-<p>今天就遇到了上面的情况,copy了一份,改了一下view的id,但是漏了几个.</p>
-<p>但是编译器没报错,代码运行也没crash,就是view的位置不对.</p>
-<p>原因是这样的:layout中的id,可以指向不是当前view的id,编译器不会检查,运行也会被忽略.</p>
-<p>例如relativelayout中layout_below的id可以随便指一个,只要在项目中….好像这个坑还是蛮严重的.敲代码头晕眼花就怎么都发现不了.难受.</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1547,7 +1546,7 @@ ifconfig ppp0
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">52</span>
+                <span class="site-state-item-count">53</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1569,7 +1568,7 @@ ifconfig ppp0
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">62</span>
+                <span class="site-state-item-count">64</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

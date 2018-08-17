@@ -114,18 +114,18 @@
 
 
 
-<meta name="description" content="ReactNative ReactContext#getCurrentActivity解析ReactNative与原生混合开发时，原生经常需要为ReactNative提供组件。提供组件时getCurrentActivity使用不当容易造成NullPointerException。 以下是一个简单的示例分析： 12345678910111213141516171819202122// 随便一个自定义">
+<meta name="description" content="ReactNative与原生混合开发时，原生经常需要为ReactNative提供组件。提供组件时getCurrentActivity使用不当容易造成NullPointerException。 以下是一个简单的示例分析： 12345678910111213141516171819202122// 随便一个自定义view，继承自LinearLayoutclass CustomView extends">
 <meta name="keywords" content="ReactNative">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ReactNative ReactContext#getCurrentActivity解析">
-<meta property="og:url" content="http://yoursite.com/2018/08/11/getCurrentActivity.html">
+<meta property="og:url" content="/2018/08/11/getCurrentActivity.html">
 <meta property="og:site_name" content="100斤的博客">
-<meta property="og:description" content="ReactNative ReactContext#getCurrentActivity解析ReactNative与原生混合开发时，原生经常需要为ReactNative提供组件。提供组件时getCurrentActivity使用不当容易造成NullPointerException。 以下是一个简单的示例分析： 12345678910111213141516171819202122// 随便一个自定义">
+<meta property="og:description" content="ReactNative与原生混合开发时，原生经常需要为ReactNative提供组件。提供组件时getCurrentActivity使用不当容易造成NullPointerException。 以下是一个简单的示例分析： 12345678910111213141516171819202122// 随便一个自定义view，继承自LinearLayoutclass CustomView extends">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-11T10:19:33.696Z">
+<meta property="og:updated_time" content="2018-08-17T04:58:19.885Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ReactNative ReactContext#getCurrentActivity解析">
-<meta name="twitter:description" content="ReactNative ReactContext#getCurrentActivity解析ReactNative与原生混合开发时，原生经常需要为ReactNative提供组件。提供组件时getCurrentActivity使用不当容易造成NullPointerException。 以下是一个简单的示例分析： 12345678910111213141516171819202122// 随便一个自定义">
+<meta name="twitter:description" content="ReactNative与原生混合开发时，原生经常需要为ReactNative提供组件。提供组件时getCurrentActivity使用不当容易造成NullPointerException。 以下是一个简单的示例分析： 12345678910111213141516171819202122// 随便一个自定义view，继承自LinearLayoutclass CustomView extends">
 
 
 
@@ -153,7 +153,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/08/11/getCurrentActivity.html"/>
+  <link rel="canonical" href="/2018/08/11/getCurrentActivity.html"/>
 
 
 
@@ -328,7 +328,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/11/getCurrentActivity.html">
+    <link itemprop="mainEntityOfPage" href="/2018/08/11/getCurrentActivity.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="100斤">
@@ -373,8 +373,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-08-11T18:19:33+08:00">
-                2018-08-11
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-17T12:58:19+08:00">
+                2018-08-17
               </time>
             
           </span>
@@ -468,7 +468,7 @@
       
 
       
-        <h1 id="ReactNative-ReactContext-getCurrentActivity解析"><a href="#ReactNative-ReactContext-getCurrentActivity解析" class="headerlink" title="ReactNative ReactContext#getCurrentActivity解析"></a>ReactNative ReactContext#getCurrentActivity解析</h1><p>ReactNative与原生混合开发时，原生经常需要为ReactNative提供组件。提供组件时getCurrentActivity使用不当容易造成NullPointerException。</p>
+        <p>ReactNative与原生混合开发时，原生经常需要为ReactNative提供组件。提供组件时getCurrentActivity使用不当容易造成NullPointerException。</p>
 <p>以下是一个简单的示例分析：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">// 随便一个自定义view，继承自LinearLayout</span><br><span class="line">class CustomView extends LinearLayout&#123;</span><br><span class="line"></span><br><span class="line">public CustomView(Context context) &#123;</span><br><span class="line">super(context);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 提供给Rn的ViewManager</span><br><span class="line">public class CustomViewManager extends SimpleViewManager&lt;CustomView&gt;&#123;</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">public String getName() &#123;</span><br><span class="line">return &quot;CustomView&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">protected CustomView createViewInstance(ThemedReactContext reactContext) &#123;</span><br><span class="line">CustomView customView = new CustomView(reactContext.getCurrentActivity());</span><br><span class="line">return customView;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
@@ -538,7 +538,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://yoursite.com/2018/08/11/getCurrentActivity.html" title="ReactNative ReactContext#getCurrentActivity解析">http://yoursite.com/2018/08/11/getCurrentActivity.html</a>
+      <a href="/2018/08/11/getCurrentActivity.html" title="ReactNative ReactContext#getCurrentActivity解析">/2018/08/11/getCurrentActivity.html</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -653,7 +653,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">52</span>
+                <span class="site-state-item-count">53</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -675,7 +675,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">62</span>
+                <span class="site-state-item-count">64</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -757,7 +757,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ReactNative-ReactContext-getCurrentActivity解析"><span class="nav-number">1.</span> <span class="nav-text"><a href="#ReactNative-ReactContext-getCurrentActivity&#x89E3;&#x6790;" class="headerlink" title="ReactNative ReactContext#getCurrentActivity&#x89E3;&#x6790;"></a>ReactNative ReactContext#getCurrentActivity&#x89E3;&#x6790;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么getCurrentActivity会为空"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#&#x4E3A;&#x4EC0;&#x4E48;getCurrentActivity&#x4F1A;&#x4E3A;&#x7A7A;" class="headerlink" title="&#x4E3A;&#x4EC0;&#x4E48;getCurrentActivity&#x4F1A;&#x4E3A;&#x7A7A;"></a>&#x4E3A;&#x4EC0;&#x4E48;getCurrentActivity&#x4F1A;&#x4E3A;&#x7A7A;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取Context和Activity的正确姿势"><span class="nav-number">1.2.</span> <span class="nav-text"><a href="#&#x83B7;&#x53D6;Context&#x548C;Activity&#x7684;&#x6B63;&#x786E;&#x59FF;&#x52BF;" class="headerlink" title="&#x83B7;&#x53D6;Context&#x548C;Activity&#x7684;&#x6B63;&#x786E;&#x59FF;&#x52BF;"></a>&#x83B7;&#x53D6;Context&#x548C;Activity&#x7684;&#x6B63;&#x786E;&#x59FF;&#x52BF;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义组件如何获取Context？"><span class="nav-number">1.2.1.</span> <span class="nav-text"><a href="#&#x81EA;&#x5B9A;&#x4E49;&#x7EC4;&#x4EF6;&#x5982;&#x4F55;&#x83B7;&#x53D6;Context&#xFF1F;" class="headerlink" title="&#x81EA;&#x5B9A;&#x4E49;&#x7EC4;&#x4EF6;&#x5982;&#x4F55;&#x83B7;&#x53D6;Context&#xFF1F;"></a>&#x81EA;&#x5B9A;&#x4E49;&#x7EC4;&#x4EF6;&#x5982;&#x4F55;&#x83B7;&#x53D6;Context&#xFF1F;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义组件如何获取Activity？"><span class="nav-number">1.2.2.</span> <span class="nav-text"><a href="#&#x81EA;&#x5B9A;&#x4E49;&#x7EC4;&#x4EF6;&#x5982;&#x4F55;&#x83B7;&#x53D6;Activity&#xFF1F;" class="headerlink" title="&#x81EA;&#x5B9A;&#x4E49;&#x7EC4;&#x4EF6;&#x5982;&#x4F55;&#x83B7;&#x53D6;Activity&#xFF1F;"></a>&#x81EA;&#x5B9A;&#x4E49;&#x7EC4;&#x4EF6;&#x5982;&#x4F55;&#x83B7;&#x53D6;Activity&#xFF1F;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么设计getCurrentActivity"><span class="nav-number">1.3.</span> <span class="nav-text"><a href="#&#x4E3A;&#x4EC0;&#x4E48;&#x8BBE;&#x8BA1;getCurrentActivity" class="headerlink" title="&#x4E3A;&#x4EC0;&#x4E48;&#x8BBE;&#x8BA1;getCurrentActivity()"></a>&#x4E3A;&#x4EC0;&#x4E48;&#x8BBE;&#x8BA1;getCurrentActivity()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">1.4.</span> <span class="nav-text"><a href="#&#x53C2;&#x8003;" class="headerlink" title="&#x53C2;&#x8003;"></a>&#x53C2;&#x8003;</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么getCurrentActivity会为空"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x4E3A;&#x4EC0;&#x4E48;getCurrentActivity&#x4F1A;&#x4E3A;&#x7A7A;" class="headerlink" title="&#x4E3A;&#x4EC0;&#x4E48;getCurrentActivity&#x4F1A;&#x4E3A;&#x7A7A;"></a>&#x4E3A;&#x4EC0;&#x4E48;getCurrentActivity&#x4F1A;&#x4E3A;&#x7A7A;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取Context和Activity的正确姿势"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x83B7;&#x53D6;Context&#x548C;Activity&#x7684;&#x6B63;&#x786E;&#x59FF;&#x52BF;" class="headerlink" title="&#x83B7;&#x53D6;Context&#x548C;Activity&#x7684;&#x6B63;&#x786E;&#x59FF;&#x52BF;"></a>&#x83B7;&#x53D6;Context&#x548C;Activity&#x7684;&#x6B63;&#x786E;&#x59FF;&#x52BF;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义组件如何获取Context？"><span class="nav-number">2.1.</span> <span class="nav-text"><a href="#&#x81EA;&#x5B9A;&#x4E49;&#x7EC4;&#x4EF6;&#x5982;&#x4F55;&#x83B7;&#x53D6;Context&#xFF1F;" class="headerlink" title="&#x81EA;&#x5B9A;&#x4E49;&#x7EC4;&#x4EF6;&#x5982;&#x4F55;&#x83B7;&#x53D6;Context&#xFF1F;"></a>&#x81EA;&#x5B9A;&#x4E49;&#x7EC4;&#x4EF6;&#x5982;&#x4F55;&#x83B7;&#x53D6;Context&#xFF1F;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义组件如何获取Activity？"><span class="nav-number">2.2.</span> <span class="nav-text"><a href="#&#x81EA;&#x5B9A;&#x4E49;&#x7EC4;&#x4EF6;&#x5982;&#x4F55;&#x83B7;&#x53D6;Activity&#xFF1F;" class="headerlink" title="&#x81EA;&#x5B9A;&#x4E49;&#x7EC4;&#x4EF6;&#x5982;&#x4F55;&#x83B7;&#x53D6;Activity&#xFF1F;"></a>&#x81EA;&#x5B9A;&#x4E49;&#x7EC4;&#x4EF6;&#x5982;&#x4F55;&#x83B7;&#x53D6;Activity&#xFF1F;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么设计getCurrentActivity"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x4E3A;&#x4EC0;&#x4E48;&#x8BBE;&#x8BA1;getCurrentActivity" class="headerlink" title="&#x4E3A;&#x4EC0;&#x4E48;&#x8BBE;&#x8BA1;getCurrentActivity()"></a>&#x4E3A;&#x4EC0;&#x4E48;&#x8BBE;&#x8BA1;getCurrentActivity()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text"><a href="#&#x53C2;&#x8003;" class="headerlink" title="&#x53C2;&#x8003;"></a>&#x53C2;&#x8003;</span></a></li></ol></div>
             
 
           </div>
