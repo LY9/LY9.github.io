@@ -1,0 +1,1001 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <!--百度联盟-->
+  <meta name="baidu_union_verify" content="d7e1bc0c80bac90c1eca63619d185426">
+  
+  <!--
+  google adsense
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-9776659635828776",
+    enable_page_level_ads: true
+  });
+</script>
+  -->
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-9776659635828776",
+    enable_page_level_ads: true
+  });
+  </script>
+
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="自定义手势缩放的Recyclerview--漫画组件," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="自定义手势缩放的Recyclerview最近做了一个类似腾讯动漫的漫画的阅读器，用Recyclerview作为基础的控件展示漫画。因为漫画需要支持手势缩放，但是原生Recyclerview并不支持，而且开源的缩放Recyclerview也没有找到，只能自己造一个轮子。这篇文章记录了一些思路。 效果预览图：https://github.com/PortgasAce/ZoomRecyclerView">
+<meta name="keywords" content="自定义手势缩放的Recyclerview--漫画组件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自定义手势缩放的Recyclerview--漫画组件">
+<meta property="og:url" content="/2018/05/01/android/自定义手势缩放的Recyclerview.html">
+<meta property="og:site_name" content="100斤的个人博客">
+<meta property="og:description" content="自定义手势缩放的Recyclerview最近做了一个类似腾讯动漫的漫画的阅读器，用Recyclerview作为基础的控件展示漫画。因为漫画需要支持手势缩放，但是原生Recyclerview并不支持，而且开源的缩放Recyclerview也没有找到，只能自己造一个轮子。这篇文章记录了一些思路。 效果预览图：https://github.com/PortgasAce/ZoomRecyclerView">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://ow0ekshxd.bkt.clouddn.com/zoomRecyclerView1.png">
+<meta property="og:updated_time" content="2018-05-23T04:31:27.077Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="自定义手势缩放的Recyclerview--漫画组件">
+<meta name="twitter:description" content="自定义手势缩放的Recyclerview最近做了一个类似腾讯动漫的漫画的阅读器，用Recyclerview作为基础的控件展示漫画。因为漫画需要支持手势缩放，但是原生Recyclerview并不支持，而且开源的缩放Recyclerview也没有找到，只能自己造一个轮子。这篇文章记录了一些思路。 效果预览图：https://github.com/PortgasAce/ZoomRecyclerView">
+<meta name="twitter:image" content="http://ow0ekshxd.bkt.clouddn.com/zoomRecyclerView1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="/2018/05/01/android/自定义手势缩放的Recyclerview.html"/>
+
+
+
+
+
+  <title>自定义手势缩放的Recyclerview--漫画组件 | 100斤的个人博客</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-105828632-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">100斤的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">心之所向 素履以往</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-loft">
+          <a href="/loft/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-hotel"></i> <br />
+            
+            阁楼
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-project">
+          <a href="/project/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-cubes"></i> <br />
+            
+            项目
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-plan">
+          <a href="/plan/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-street-view"></i> <br />
+            
+            大计划
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-bug">
+          <a href="/categories/bug" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-bug"></i> <br />
+            
+            bug清单
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-book">
+          <a href="/book/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            书籍分享
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="/2018/05/01/android/自定义手势缩放的Recyclerview.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="100斤">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="100斤的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">自定义手势缩放的Recyclerview--漫画组件</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-01T12:06:19+08:00">
+                2018-05-01
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-23T12:31:27+08:00">
+                2018-05-23
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/05/01/android/自定义手势缩放的Recyclerview.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2018/05/01/android/自定义手势缩放的Recyclerview.html" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="自定义手势缩放的Recyclerview"><a href="#自定义手势缩放的Recyclerview" class="headerlink" title="自定义手势缩放的Recyclerview"></a>自定义手势缩放的Recyclerview</h1><p>最近做了一个类似腾讯动漫的漫画的阅读器，用Recyclerview作为基础的控件展示漫画。因为漫画需要支持手势缩放，但是原生Recyclerview并不支持，而且开源的缩放Recyclerview也没有找到，只能自己造一个轮子。这篇文章记录了一些思路。</p>
+<p>效果预览图：<a href="https://github.com/PortgasAce/ZoomRecyclerView" target="_blank" rel="noopener">https://github.com/PortgasAce/ZoomRecyclerView</a></p>
+<h1 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h1><p>通过重写Recyclerview的dispatchDraw()方法，操作canvas缩放和平移实现手势缩放功能。如果对矩阵熟练的话，可以给canvas设置矩阵实现，但是我不熟练。。所以只能通过最基本的canvas平移和缩放实现。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">protected void dispatchDraw(@NonNull Canvas canvas) &#123;</span><br><span class="line"></span><br><span class="line">  canvas.save();</span><br><span class="line">  canvas.translate(mTranX, mTranY);</span><br><span class="line">  canvas.scale(mScaleFactor, mScaleFactor);</span><br><span class="line"></span><br><span class="line">  // 所有子view都会缩放和平移</span><br><span class="line">  super.dispatchDraw(canvas);</span><br><span class="line">  canvas.restore();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<h1 id="计算过程"><a href="#计算过程" class="headerlink" title="计算过程"></a>计算过程</h1><p>通过上面的代码片段可知，只需要x，y方向的偏移量（mTranx,mTranY）和缩放系数(mScaleFactor)就可以实现缩放。</p>
+<h2 id="偏移量的计算"><a href="#偏移量的计算" class="headerlink" title="偏移量的计算"></a>偏移量的计算</h2><p>偏移量与另一个值相关，就是缩放中心（双击的触摸点 或者 是双指触摸的中心）。设想一下双击屏幕的的左上角和右下角，缩放系数的值相同，但是偏移量不同，双击左上角的偏移量为(0,0)，而右下角的偏移量则为(-MaxTranX,-MaxTranY)。</p>
+<p>双击屏幕上一点的示例图如下：</p>
+<p><img src="http://ow0ekshxd.bkt.clouddn.com/zoomRecyclerView1.png" alt="demo"></p>
+<p>∵<br>总偏移量:<br>MaxTranX = X1+X2 = W1(S2-S1)<br>MaxTranY = Y1+Y2 = H1(S2-S1)<br>X方向偏移量比总偏移量 等于 缩放中心比屏幕宽度<br>X1/MaxTranX = X1/W1(S2-S1) = Tx/W1<br>Y1/MaxTranY = Y1/H1(S2-S1) = Ty/H1<br>∴<br>X1 = W1(S2-S1)<em>(Tx/W1) = (S2-S1)</em>Tx<br>Y1 = H1(S2-21)<em>(Ty/H1) = (S2-S1)</em>Ty<br>最终A2点的坐标因为坐标系的原因需要加一个负号：<br>A2 = (-X1,-Y1) = (-(S2-S1)<em>Tx,-(S2-S1)</em>Ty)</p>
+<h2 id="缩放中心"><a href="#缩放中心" class="headerlink" title="缩放中心"></a>缩放中心</h2><p>双击缩放通过GestureDetector实现，缩放中心在onDoubleTap()方法中直接通过MotionEvent的getX()和getY()获取。</p>
+<p>双指缩放通过ScaleDetector实现，缩放中心通过ScaleGestureDetector的getFocusX()和getFocusY()获取。</p>
+<h2 id="缩放系数"><a href="#缩放系数" class="headerlink" title="缩放系数"></a>缩放系数</h2><p>双击缩放时，如果当前的缩放系数不等于1则缩放系数为1，如果当前缩放系数为1，则缩放系数等于最大缩放系数。</p>
+<p>双指缩放时，缩放系数为当前缩放系数 乘 onScale回调中detector.getScaleFactor()。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 默认缩放比只能为1</span><br><span class="line"> * 缩放动画时长暂时没有根据缩放比例改动</span><br><span class="line"> */</span><br><span class="line">@SuppressWarnings(&quot;UnnecessaryLocalVariable&quot;)</span><br><span class="line">@SuppressLint(&quot;ClickableViewAccessibility&quot;)</span><br><span class="line">public class ZoomRecyclerView extends RecyclerView &#123;</span><br><span class="line"></span><br><span class="line">  private static final String TAG = &quot;999&quot;;</span><br><span class="line"></span><br><span class="line">  // constant</span><br><span class="line">  private static final int DEFAULT_SCALE_DURATION = 300;</span><br><span class="line">  private static final float DEFAULT_SCALE_FACTOR = 1.f;</span><br><span class="line">  private static final float DEFAULT_MAX_SCALE_FACTOR = 2.0f;</span><br><span class="line">  private static final float DEFAULT_MIN_SCALE_FACTOR = 0.5f;</span><br><span class="line">  private static final String PROPERTY_SCALE = &quot;scale&quot;;</span><br><span class="line">  private static final String PROPERTY_TRANX = &quot;tranX&quot;;</span><br><span class="line">  private static final String PROPERTY_TRANY = &quot;tranY&quot;;</span><br><span class="line">  private static final float INVALID_TOUCH_POSITION = -1;</span><br><span class="line"></span><br><span class="line">  // touch detector</span><br><span class="line">  ScaleGestureDetector mScaleDetector;</span><br><span class="line">  GestureDetectorCompat mGestureDetector;</span><br><span class="line"></span><br><span class="line">  // draw param</span><br><span class="line">  float mViewWidth;       // 宽度</span><br><span class="line">  float mViewHeight;      // 高度</span><br><span class="line">  float mTranX;           // x偏移量</span><br><span class="line">  float mTranY;           // y偏移量</span><br><span class="line">  float mScaleFactor;     // 缩放系数</span><br><span class="line"></span><br><span class="line">  // touch param</span><br><span class="line">  int mActivePointerId = INVALID_POINTER_ID;  // 有效的手指id</span><br><span class="line">  float mLastTouchX;      // 上一次触摸位置 X</span><br><span class="line">  float mLastTouchY;      // 上一次触摸位置 Y</span><br><span class="line"></span><br><span class="line">  // control param</span><br><span class="line">  boolean isScaling = false;    // 是否正在缩放</span><br><span class="line">  boolean isEnableScale = false;// 是否支持缩放</span><br><span class="line"></span><br><span class="line">  // zoom param</span><br><span class="line">  ValueAnimator mScaleAnimator; //缩放动画</span><br><span class="line">  float mScaleCenterX;    // 缩放中心 X</span><br><span class="line">  float mScaleCenterY;    // 缩放中心 Y</span><br><span class="line">  float mMaxTranX;        // 当前缩放系数下最大的X偏移量</span><br><span class="line">  float mMaxTranY;        // 当前缩放系数下最大的Y偏移量</span><br><span class="line"></span><br><span class="line">  // config param</span><br><span class="line">  float mMaxScaleFactor;      // 最大缩放系数</span><br><span class="line">  float mMinScaleFactor;      // 最小缩放系数</span><br><span class="line">  float mDefaultScaleFactor;  // 默认缩放系数 双击缩小后的缩放系数 暂不支持小于1</span><br><span class="line">  int mScaleDuration;         // 缩放时间 ms</span><br><span class="line"></span><br><span class="line">  public ZoomRecyclerView(Context context) &#123;</span><br><span class="line">    super(context);</span><br><span class="line">    init(null);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  public ZoomRecyclerView(Context context, @Nullable AttributeSet attrs) &#123;</span><br><span class="line">    super(context, attrs);</span><br><span class="line">    init(attrs);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  public ZoomRecyclerView(Context context, @Nullable AttributeSet attrs, int defStyle) &#123;</span><br><span class="line">    super(context, attrs, defStyle);</span><br><span class="line">    init(attrs);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  private void init(AttributeSet attr) &#123;</span><br><span class="line">    mScaleDetector = new ScaleGestureDetector(getContext(), new ScaleListener());</span><br><span class="line">    mGestureDetector = new GestureDetectorCompat(getContext(), new GestureListener());</span><br><span class="line"></span><br><span class="line">    if (attr != null) &#123;</span><br><span class="line">      TypedArray a = getContext()</span><br><span class="line">          .obtainStyledAttributes(attr, R.styleable.ZoomRecyclerView, 0, 0);</span><br><span class="line">      mMinScaleFactor =</span><br><span class="line">          a.getFloat(R.styleable.ZoomRecyclerView_min_scale, DEFAULT_MIN_SCALE_FACTOR);</span><br><span class="line">      mMaxScaleFactor =</span><br><span class="line">          a.getFloat(R.styleable.ZoomRecyclerView_max_scale, DEFAULT_MAX_SCALE_FACTOR);</span><br><span class="line">      mDefaultScaleFactor = a</span><br><span class="line">          .getFloat(R.styleable.ZoomRecyclerView_default_scale, DEFAULT_SCALE_FACTOR);</span><br><span class="line">      mScaleFactor = mDefaultScaleFactor;</span><br><span class="line">      mScaleDuration = a.getInteger(R.styleable.ZoomRecyclerView_zoom_duration,</span><br><span class="line">          DEFAULT_SCALE_DURATION);</span><br><span class="line">      a.recycle();</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      //init param with default</span><br><span class="line">      mMaxScaleFactor = DEFAULT_MAX_SCALE_FACTOR;</span><br><span class="line">      mMinScaleFactor = DEFAULT_MIN_SCALE_FACTOR;</span><br><span class="line">      mDefaultScaleFactor = DEFAULT_SCALE_FACTOR;</span><br><span class="line">      mScaleFactor = mDefaultScaleFactor;</span><br><span class="line">      mScaleDuration = DEFAULT_SCALE_DURATION;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @Override</span><br><span class="line">  protected void onDetachedFromWindow() &#123;</span><br><span class="line">    super.onDetachedFromWindow();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @Override</span><br><span class="line">  protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) &#123;</span><br><span class="line">    mViewWidth = MeasureSpec.getSize(widthMeasureSpec);</span><br><span class="line">    mViewHeight = MeasureSpec.getSize(heightMeasureSpec);</span><br><span class="line">    super.onMeasure(widthMeasureSpec, heightMeasureSpec);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @Override</span><br><span class="line">  public boolean onTouchEvent(@NonNull MotionEvent ev) &#123;</span><br><span class="line"></span><br><span class="line">    if (!isEnableScale) &#123;</span><br><span class="line">      return super.onTouchEvent(ev);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    boolean retVal = mScaleDetector.onTouchEvent(ev);</span><br><span class="line">    retVal = mGestureDetector.onTouchEvent(ev) || retVal;</span><br><span class="line"></span><br><span class="line">    int action = ev.getActionMasked();</span><br><span class="line"></span><br><span class="line">    switch (action) &#123;</span><br><span class="line">      case ACTION_DOWN: &#123;</span><br><span class="line">        final int pointerIndex = ev.getActionIndex();</span><br><span class="line">        final float x = ev.getX(pointerIndex);</span><br><span class="line">        final float y = ev.getY(pointerIndex);</span><br><span class="line">        // Remember where we started (for dragging)</span><br><span class="line">        mLastTouchX = x;</span><br><span class="line">        mLastTouchY = y;</span><br><span class="line">        // Save the ID of this pointer (for dragging)</span><br><span class="line">        mActivePointerId = ev.getPointerId(0);</span><br><span class="line">        break;</span><br><span class="line">      &#125;</span><br><span class="line">      case ACTION_MOVE: &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">          // Find the index of the active pointer and fetch its position</span><br><span class="line">          final int pointerIndex = ev.findPointerIndex(mActivePointerId);</span><br><span class="line"></span><br><span class="line">          final float x = ev.getX(pointerIndex);</span><br><span class="line">          final float y = ev.getY(pointerIndex);</span><br><span class="line"></span><br><span class="line">          if (!isScaling &amp;&amp; mScaleFactor &gt; 1) &#123; // 缩放时不做处理</span><br><span class="line">            // Calculate the distance moved</span><br><span class="line">            final float dx = x - mLastTouchX;</span><br><span class="line">            final float dy = y - mLastTouchY;</span><br><span class="line"></span><br><span class="line">            setTranslateXY(mTranX + dx, mTranY + dy);</span><br><span class="line">            correctTranslateXY();</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          invalidate();</span><br><span class="line">          // Remember this touch position for the next move event</span><br><span class="line">          mLastTouchX = x;</span><br><span class="line">          mLastTouchY = y;</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">          final float x = ev.getX();</span><br><span class="line">          final float y = ev.getY();</span><br><span class="line"></span><br><span class="line">          if (!isScaling &amp;&amp; mScaleFactor &gt; 1 &amp;&amp; mLastTouchX != INVALID_TOUCH_POSITION) &#123; // 缩放时不做处理</span><br><span class="line">            // Calculate the distance moved</span><br><span class="line">            final float dx = x - mLastTouchX;</span><br><span class="line">            final float dy = y - mLastTouchY;</span><br><span class="line"></span><br><span class="line">            setTranslateXY(mTranX + dx, mTranY + dy);</span><br><span class="line">            correctTranslateXY();</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          invalidate();</span><br><span class="line">          // Remember this touch position for the next move event</span><br><span class="line">          mLastTouchX = x;</span><br><span class="line">          mLastTouchY = y;</span><br><span class="line">        &#125;</span><br><span class="line">        break;</span><br><span class="line">      &#125;</span><br><span class="line">      case ACTION_UP:</span><br><span class="line">      case ACTION_CANCEL:</span><br><span class="line">        mActivePointerId = INVALID_POINTER_ID;</span><br><span class="line">        mLastTouchX = INVALID_TOUCH_POSITION;</span><br><span class="line">        mLastTouchY = INVALID_TOUCH_POSITION;</span><br><span class="line">        break;</span><br><span class="line">      case ACTION_POINTER_UP: &#123;</span><br><span class="line">        final int pointerIndex = ev.getActionIndex();</span><br><span class="line">        final int pointerId = ev.getPointerId(pointerIndex);</span><br><span class="line">        if (pointerId == mActivePointerId) &#123;</span><br><span class="line">          // This was our active pointer going up. Choose a new</span><br><span class="line">          // active pointer and adjust accordingly.</span><br><span class="line">          final int newPointerIndex = pointerIndex == 0 ? 1 : 0;</span><br><span class="line">          mLastTouchX = ev.getX(newPointerIndex);</span><br><span class="line">          mLastTouchY = ev.getY(newPointerIndex);</span><br><span class="line">          mActivePointerId = ev.getPointerId(newPointerIndex);</span><br><span class="line">        &#125;</span><br><span class="line">        break;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return super.onTouchEvent(ev) || retVal;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @SuppressLint(&quot;WrongConstant&quot;)</span><br><span class="line">  @Override</span><br><span class="line">  protected void dispatchDraw(@NonNull Canvas canvas) &#123;</span><br><span class="line"></span><br><span class="line">    canvas.save();</span><br><span class="line">    canvas.translate(mTranX, mTranY);</span><br><span class="line">    canvas.scale(mScaleFactor, mScaleFactor);</span><br><span class="line"></span><br><span class="line">    // 所有子view都会缩放和平移</span><br><span class="line">    super.dispatchDraw(canvas);</span><br><span class="line">    canvas.restore();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  private void setTranslateXY(float tranX, float tranY) &#123;</span><br><span class="line">    mTranX = tranX;</span><br><span class="line">    mTranY = tranY;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  //当scale 大于 1 时修正action move的位置</span><br><span class="line">  private void correctTranslateXY() &#123;</span><br><span class="line">    float[] correctXY = correctTranslateXY(mTranX, mTranY);</span><br><span class="line">    mTranX = correctXY[0];</span><br><span class="line">    mTranY = correctXY[1];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  private float[] correctTranslateXY(float x, float y) &#123;</span><br><span class="line">    if (mScaleFactor &lt;= 1) &#123;</span><br><span class="line">      return new float[]&#123;x, y&#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (x &gt; 0.0f) &#123;</span><br><span class="line">      x = 0.0f;</span><br><span class="line">    &#125; else if (x &lt; mMaxTranX) &#123;</span><br><span class="line">      x = mMaxTranX;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (y &gt; 0.0f) &#123;</span><br><span class="line">      y = 0.0f;</span><br><span class="line">    &#125; else if (y &lt; mMaxTranY) &#123;</span><br><span class="line">      y = mMaxTranY;</span><br><span class="line">    &#125;</span><br><span class="line">    return new float[]&#123;x, y&#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  private void zoom(float startVal, float endVal) &#123;</span><br><span class="line">    if (mScaleAnimator == null) &#123;</span><br><span class="line">      newZoomAnimation();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (mScaleAnimator.isRunning()) &#123;</span><br><span class="line">      return;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //set Value</span><br><span class="line">    mMaxTranX = mViewWidth - (mViewWidth * endVal);</span><br><span class="line">    mMaxTranY = mViewHeight - (mViewHeight * endVal);</span><br><span class="line"></span><br><span class="line">    float startTranX = mTranX;</span><br><span class="line">    float startTranY = mTranY;</span><br><span class="line">    float endTranX = mTranX - (endVal - startVal) * mScaleCenterX;</span><br><span class="line">    float endTranY = mTranY - (endVal - startVal) * mScaleCenterY;</span><br><span class="line">    float[] correct = correctTranslateXY(endTranX, endTranY);</span><br><span class="line">    endTranX = correct[0];</span><br><span class="line">    endTranY = correct[1];</span><br><span class="line"></span><br><span class="line">    PropertyValuesHolder scaleHolder = PropertyValuesHolder</span><br><span class="line">        .ofFloat(PROPERTY_SCALE, startVal, endVal);</span><br><span class="line">    PropertyValuesHolder tranXHolder = PropertyValuesHolder</span><br><span class="line">        .ofFloat(PROPERTY_TRANX, startTranX, endTranX);</span><br><span class="line">    PropertyValuesHolder tranYHolder = PropertyValuesHolder</span><br><span class="line">        .ofFloat(PROPERTY_TRANY, startTranY, endTranY);</span><br><span class="line">    mScaleAnimator.setValues(scaleHolder, tranXHolder, tranYHolder);</span><br><span class="line">    mScaleAnimator.setDuration(mScaleDuration);</span><br><span class="line">    mScaleAnimator.start();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  private void newZoomAnimation() &#123;</span><br><span class="line">    mScaleAnimator = new ValueAnimator();</span><br><span class="line">    mScaleAnimator.setInterpolator(new DecelerateInterpolator());</span><br><span class="line">    mScaleAnimator.addUpdateListener(new AnimatorUpdateListener() &#123;</span><br><span class="line">      @Override</span><br><span class="line">      public void onAnimationUpdate(ValueAnimator animation) &#123;</span><br><span class="line">        //update scaleFactor &amp; tranX &amp; tranY</span><br><span class="line">        mScaleFactor = (float) animation.getAnimatedValue(PROPERTY_SCALE);</span><br><span class="line">        setTranslateXY(</span><br><span class="line">            (float) animation.getAnimatedValue(PROPERTY_TRANX),</span><br><span class="line">            (float) animation.getAnimatedValue(PROPERTY_TRANY)</span><br><span class="line">        );</span><br><span class="line">        invalidate();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    // set listener to update scale flag</span><br><span class="line">    mScaleAnimator.addListener(new AnimatorListenerAdapter() &#123;</span><br><span class="line"></span><br><span class="line">      @Override</span><br><span class="line">      public void onAnimationStart(Animator animation) &#123;</span><br><span class="line">        isScaling = true;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      @Override</span><br><span class="line">      public void onAnimationEnd(Animator animation) &#123;</span><br><span class="line">        isScaling = false;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      @Override</span><br><span class="line">      public void onAnimationCancel(Animator animation) &#123;</span><br><span class="line">        isScaling = false;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // handle scale event</span><br><span class="line">  private class ScaleListener implements OnScaleGestureListener &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public boolean onScaleBegin(ScaleGestureDetector detector) &#123;</span><br><span class="line">      return true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public boolean onScale(ScaleGestureDetector detector) &#123;</span><br><span class="line">      final float mLastScale = mScaleFactor;</span><br><span class="line">      mScaleFactor *= detector.getScaleFactor();</span><br><span class="line">      //修正scaleFactor</span><br><span class="line">      mScaleFactor = Math.max(mMinScaleFactor, Math.min(mScaleFactor, mMaxScaleFactor));</span><br><span class="line"></span><br><span class="line">      mMaxTranX = mViewWidth - (mViewWidth * mScaleFactor);</span><br><span class="line">      mMaxTranY = mViewHeight - (mViewHeight * mScaleFactor);</span><br><span class="line"></span><br><span class="line">      mScaleCenterX = detector.getFocusX();</span><br><span class="line">      mScaleCenterY = detector.getFocusY();</span><br><span class="line"></span><br><span class="line">      float offsetX = mScaleCenterX * (mLastScale - mScaleFactor);</span><br><span class="line">      float offsetY = mScaleCenterY * (mLastScale - mScaleFactor);</span><br><span class="line"></span><br><span class="line">      setTranslateXY(mTranX + offsetX, mTranY + offsetY);</span><br><span class="line"></span><br><span class="line">      isScaling = true;</span><br><span class="line">      invalidate();</span><br><span class="line">      return true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onScaleEnd(ScaleGestureDetector detector) &#123;</span><br><span class="line">      if (mScaleFactor &lt;= mDefaultScaleFactor) &#123;</span><br><span class="line">        mScaleCenterX = -mTranX / (mScaleFactor - 1);</span><br><span class="line">        mScaleCenterY = -mTranY / (mScaleFactor - 1);</span><br><span class="line">        mScaleCenterX = Float.isNaN(mScaleCenterX) ? 0 : mScaleCenterX;</span><br><span class="line">        mScaleCenterY = Float.isNaN(mScaleCenterY) ? 0 : mScaleCenterY;</span><br><span class="line">        zoom(mScaleFactor, mDefaultScaleFactor);</span><br><span class="line">      &#125;</span><br><span class="line">      isScaling = false;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  private class GestureListener extends GestureDetector.SimpleOnGestureListener &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public boolean onDoubleTap(MotionEvent e) &#123;</span><br><span class="line">      float startFactor = mScaleFactor;</span><br><span class="line">      float endFactor;</span><br><span class="line"></span><br><span class="line">      if (mScaleFactor == mDefaultScaleFactor) &#123;</span><br><span class="line">        mScaleCenterX = e.getX();</span><br><span class="line">        mScaleCenterY = e.getY();</span><br><span class="line">        endFactor = mMaxScaleFactor;</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        mScaleCenterX = mScaleFactor == 1 ? e.getX() : -mTranX / (mScaleFactor - 1);</span><br><span class="line">        mScaleCenterY = mScaleFactor == 1 ? e.getY() : -mTranY / (mScaleFactor - 1);</span><br><span class="line">        endFactor = mDefaultScaleFactor;</span><br><span class="line">      &#125;</span><br><span class="line">      zoom(startFactor, endFactor);</span><br><span class="line">      boolean retVal = super.onDoubleTap(e);</span><br><span class="line">      return retVal;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // public method</span><br><span class="line">  public void setEnableScale(boolean enable) &#123;</span><br><span class="line">    if (isEnableScale == enable) &#123;</span><br><span class="line">      return;</span><br><span class="line">    &#125;</span><br><span class="line">    this.isEnableScale = enable;</span><br><span class="line">    // 禁用了 恢复比例1</span><br><span class="line">    if (!isEnableScale &amp;&amp; mScaleFactor != 1) &#123;</span><br><span class="line">      zoom(mScaleFactor, 1);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  public boolean isEnableScale() &#123;</span><br><span class="line">    return isEnableScale;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Github:<br><a href="https://github.com/PortgasAce/ZoomRecyclerView" target="_blank" rel="noopener">https://github.com/PortgasAce/ZoomRecyclerView</a></p>
+<p>以上。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://developer.android.com/training/gestures/scale.html" target="_blank" rel="noopener">google developer scale</a><br><a href="https://developer.android.com/training/gestures/scroll.html" target="_blank" rel="noopener">google developer scroll</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>赞赏还是要有的QAQ</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <!--none改block,默认展开赞赏-->
+    <div id="QR" style="display: block;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechatpay.jpg" alt="100斤 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="100斤 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      100斤
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="/2018/05/01/android/自定义手势缩放的Recyclerview.html" title="自定义手势缩放的Recyclerview--漫画组件">/2018/05/01/android/自定义手势缩放的Recyclerview.html</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-ND 4.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/自定义手势缩放的Recyclerview-漫画组件/" rel="tag"># 自定义手势缩放的Recyclerview--漫画组件</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/05/font_end/react_native/ReactNative踩坑-ReactContext-Activity.html" rel="next" title="ReactNative踩坑:ReactContext!=Activity">
+                <i class="fa fa-chevron-left"></i> ReactNative踩坑:ReactContext!=Activity
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/03/git/403.html" rel="prev" title="git push 403">
+                git push 403 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="SOHUCS"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="100斤" />
+          <p class="site-author-name" itemprop="name">100斤</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">54</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">65</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://git.oschina.net/50k" target="_blank" title="码云">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  码云
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/PortgasAce" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-nd.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+          <div class ="custom-logo-site-title">
+            <p class="site-state-item-count">请在场的各位给个面子.<br/>——香克斯</p>
+          </div>
+        
+        
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              挺不错的博客
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://coolshell.cn/" title="CodeShell" target="_blank">CodeShell</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#自定义手势缩放的Recyclerview"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x81EA;&#x5B9A;&#x4E49;&#x624B;&#x52BF;&#x7F29;&#x653E;&#x7684;Recyclerview" class="headerlink" title="&#x81EA;&#x5B9A;&#x4E49;&#x624B;&#x52BF;&#x7F29;&#x653E;&#x7684;Recyclerview"></a>&#x81EA;&#x5B9A;&#x4E49;&#x624B;&#x52BF;&#x7F29;&#x653E;&#x7684;Recyclerview</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本原理"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x57FA;&#x672C;&#x539F;&#x7406;" class="headerlink" title="&#x57FA;&#x672C;&#x539F;&#x7406;"></a>&#x57FA;&#x672C;&#x539F;&#x7406;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#计算过程"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x8BA1;&#x7B97;&#x8FC7;&#x7A0B;" class="headerlink" title="&#x8BA1;&#x7B97;&#x8FC7;&#x7A0B;"></a>&#x8BA1;&#x7B97;&#x8FC7;&#x7A0B;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#偏移量的计算"><span class="nav-number">3.1.</span> <span class="nav-text"><a href="#&#x504F;&#x79FB;&#x91CF;&#x7684;&#x8BA1;&#x7B97;" class="headerlink" title="&#x504F;&#x79FB;&#x91CF;&#x7684;&#x8BA1;&#x7B97;"></a>&#x504F;&#x79FB;&#x91CF;&#x7684;&#x8BA1;&#x7B97;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缩放中心"><span class="nav-number">3.2.</span> <span class="nav-text"><a href="#&#x7F29;&#x653E;&#x4E2D;&#x5FC3;" class="headerlink" title="&#x7F29;&#x653E;&#x4E2D;&#x5FC3;"></a>&#x7F29;&#x653E;&#x4E2D;&#x5FC3;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缩放系数"><span class="nav-number">3.3.</span> <span class="nav-text"><a href="#&#x7F29;&#x653E;&#x7CFB;&#x6570;" class="headerlink" title="&#x7F29;&#x653E;&#x7CFB;&#x6570;"></a>&#x7F29;&#x653E;&#x7CFB;&#x6570;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">3.4.</span> <span class="nav-text"><a href="#&#x4EE3;&#x7801;" class="headerlink" title="&#x4EE3;&#x7801;"></a>&#x4EE3;&#x7801;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">3.5.</span> <span class="nav-text"><a href="#&#x53C2;&#x8003;" class="headerlink" title="&#x53C2;&#x8003;"></a>&#x53C2;&#x8003;</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">100斤</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytb717ti';
+      var conf = 'cb516d22ac94ff3a17ee9206549de581';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.1"></script>
+
+
+  
+
+</body>
+</html>
