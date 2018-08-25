@@ -855,14 +855,16 @@
 
     
   <url>
-    <loc>/2017/08/16/android/android-studio%E7%9A%84%E5%9D%91%E4%BA%8C.html</loc>
+    <loc>/2018/08/17/android/SVG-ResourceNotFound.html</loc>
     <lastmod>2018-08-19T15:59:53.120Z</lastmod>
     <data>
         <display>
-        <title>android studio的坑二</title>
-        <pubTime>2017-08-15T17:17:23.000Z</pubTime>
+        <title>SVG踩坑：Resources$NotFoundException File res/drawable-hdpi-v4/</title>
+        <pubTime>2018-08-17T04:51:34.000Z</pubTime>
         
-        <tag>android studio的坑</tag>
+        <tag>SVG</tag>
+         
+        <tag>Resources$NotFoundException</tag>
          
          
            
@@ -875,16 +877,14 @@
 
     
   <url>
-    <loc>/2018/08/17/android/SVG-ResourceNotFound.html</loc>
+    <loc>/2017/08/16/android/android-studio%E7%9A%84%E5%9D%91%E4%BA%8C.html</loc>
     <lastmod>2018-08-19T15:59:53.120Z</lastmod>
     <data>
         <display>
-        <title>SVG踩坑：Resources$NotFoundException File res/drawable-hdpi-v4/</title>
-        <pubTime>2018-08-17T04:51:34.000Z</pubTime>
+        <title>android studio的坑二</title>
+        <pubTime>2017-08-15T17:17:23.000Z</pubTime>
         
-        <tag>SVG</tag>
-         
-        <tag>Resources$NotFoundException</tag>
+        <tag>android studio的坑</tag>
          
          
            
