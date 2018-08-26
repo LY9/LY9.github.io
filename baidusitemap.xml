@@ -835,6 +835,26 @@
 
     
   <url>
+    <loc>/2017/08/16/android/android-studio%E7%9A%84%E5%9D%91%E4%BA%8C.html</loc>
+    <lastmod>2018-08-19T15:59:53.120Z</lastmod>
+    <data>
+        <display>
+        <title>android studio的坑二</title>
+        <pubTime>2017-08-15T17:17:23.000Z</pubTime>
+        
+        <tag>android studio的坑</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="/categories/android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>/2017/10/20/android/SharedPreference%E5%B0%81%E8%A3%85.html</loc>
     <lastmod>2018-08-19T15:59:53.120Z</lastmod>
     <data>
@@ -865,26 +885,6 @@
         <tag>SVG</tag>
          
         <tag>Resources$NotFoundException</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="/categories/android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>/2017/08/16/android/android-studio%E7%9A%84%E5%9D%91%E4%BA%8C.html</loc>
-    <lastmod>2018-08-19T15:59:53.120Z</lastmod>
-    <data>
-        <display>
-        <title>android studio的坑二</title>
-        <pubTime>2017-08-15T17:17:23.000Z</pubTime>
-        
-        <tag>android studio的坑</tag>
          
          
            
