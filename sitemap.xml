@@ -261,13 +261,6 @@
   </url>
   
   <url>
-    <loc>/2018/05/01/android/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%89%8B%E5%8A%BF%E7%BC%A9%E6%94%BE%E7%9A%84Recyclerview.html</loc>
-    
-    <lastmod>2018-08-19T15:59:53.122Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>/2017/08/11/android/%E8%AE%B0android-studio%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91.html</loc>
     
     <lastmod>2018-08-19T15:59:53.122Z</lastmod>
@@ -289,6 +282,13 @@
   </url>
   
   <url>
+    <loc>/2018/05/01/android/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%89%8B%E5%8A%BF%E7%BC%A9%E6%94%BE%E7%9A%84Recyclerview.html</loc>
+    
+    <lastmod>2018-08-19T15:59:53.122Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>/2017/10/17/android/ubuntuNoPermission.html</loc>
     
     <lastmod>2018-08-19T15:59:53.121Z</lastmod>
@@ -303,13 +303,6 @@
   </url>
   
   <url>
-    <loc>/2017/10/20/android/SharedPreference%E5%B0%81%E8%A3%85.html</loc>
-    
-    <lastmod>2018-08-19T15:59:53.120Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>/2018/08/17/android/SVG-ResourceNotFound.html</loc>
     
     <lastmod>2018-08-19T15:59:53.120Z</lastmod>
@@ -317,14 +310,21 @@
   </url>
   
   <url>
-    <loc>/2017/08/08/android/RelativeLayoutAndRTL.html</loc>
+    <loc>/2017/10/20/android/SharedPreference%E5%B0%81%E8%A3%85.html</loc>
+    
+    <lastmod>2018-08-19T15:59:53.120Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>/2017/10/18/android/RemoteServiceException.html</loc>
     
     <lastmod>2018-08-19T15:59:53.119Z</lastmod>
     
   </url>
   
   <url>
-    <loc>/2017/10/18/android/RemoteServiceException.html</loc>
+    <loc>/2017/08/08/android/RelativeLayoutAndRTL.html</loc>
     
     <lastmod>2018-08-19T15:59:53.119Z</lastmod>
     
