@@ -1,3 +1,3 @@
+/bigPlan/100k/100k180825.html
+/bigPlan/100k/100k180824.html
 /bug/天猫购物车金额异常.html
-/font_end/react_native/理解npm-run.html
-/android/SVG-ResourceNotFound.html

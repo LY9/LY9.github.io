@@ -372,6 +372,405 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="/font_end/react_native/ReactNative踩坑-ReactContext-Activity.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="100斤">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="100斤的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/font_end/react_native/ReactNative踩坑-ReactContext-Activity.html" itemprop="url">ReactNative踩坑:ReactContext!=Activity</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-05T12:06:19+08:00">
+                2018-04-05
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-23T12:32:30+08:00">
+                2018-05-23
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/reactnative/" itemprop="url" rel="index">
+                    <span itemprop="name">ReactNative</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/font_end/react_native/ReactNative踩坑-ReactContext-Activity.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::/font_end/react_native/ReactNative踩坑-ReactContext-Activity.html" class="cy_cmt_count" data-xid="font_end/react_native/ReactNative踩坑-ReactContext-Activity.html" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>项目中有一个书架的View提供给ReactNative使用，监听ReactNative相应的生命周期进行界面刷新，代码如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//ViewManager</span><br><span class="line">public class BookShelfManager extends SimpleViewManager&lt;BookShelfView&gt; &#123;</span><br><span class="line">  private BookShelfView mBookShelfView;</span><br><span class="line"></span><br><span class="line">  @Override</span><br><span class="line">  protected BookShelfView createViewInstance(ThemedReactContext reactContext) &#123;</span><br><span class="line">    mBookShelfView = new BookShelfView(reactContext.getCurrentActivity());</span><br><span class="line">    reactContext.addLifecycleEventListener(mBookShelfView);</span><br><span class="line">    mBookShelfView.setReactContext(reactContext);</span><br><span class="line">    return mBookShelfView;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  //...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/font_end/react_native/ReactNative踩坑-ReactContext-Activity.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="/font_end/react_native/command-node.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="100斤">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="100斤的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/font_end/react_native/command-node.html" itemprop="url">A problem occurred starting process 'command 'node''</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T12:06:19+08:00">
+                2018-03-12
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-19T23:56:30+08:00">
+                2018-08-19
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/reactnative/" itemprop="url" rel="index">
+                    <span itemprop="name">ReactNative</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/font_end/react_native/command-node.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::/font_end/react_native/command-node.html" class="cy_cmt_count" data-xid="font_end/react_native/command-node.html" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>ReactNative的热更新，微软提供了CodePush的解决方案，在Android集成时遇到了如下问题：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Error:Execution failed for task &apos;:app:recordFilesBeforeBundleCommandDebug&apos;.</span><br><span class="line">&gt; A problem occurred starting process &apos;command &apos;node&apos;&apos;</span><br></pre></td></tr></table></figure>
+<p>node命令无法执行，我的环境是mac/Android Studio3.0/BuildTool26.0.2，查了好多资料，最后在ReactNative的issue中找到了答案，记录如下：</p>
+<ul>
+<li><p>找到codepush.gradle文件<br>集成code push的时候，在项目的gradle文件中加了如下一行代码，指明了codepush.gradle的位置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apply from: &quot;../../node_modules/react-native-code-push/android/codepush.gradle&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改nodeExecutableAndArgs的值</p>
+<p>codepush.gradle文件中定义了nodeExecutableAndArgs如下：</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">def nodeExecutableAndArgs = config.nodeExecutableAndArgs ?: [&quot;node&quot;]</span><br></pre></td></tr></table></figure>
+<p>粗暴的修改可以是这样子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">def nodeExecutableAndArgs = config.nodeExecutableAndArgs ?: [&quot;/usr/local/bin/node&quot;]</span><br></pre></td></tr></table></figure>
+<p>“/usr/local/bin/node” 可以通过命令 which node查看node的位置。</p>
+<p>但是我们项目可能会有jekins等自动打包测试，所以为了降低对别人的影响最好修改如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// Android studio bug hack</span><br><span class="line">if (System.properties[&apos;os.name&apos;].contains(&quot;Mac&quot;)) &#123;</span><br><span class="line">    project.ext.react.nodeExecutableAndArgs = [&quot;/usr/local/bin/node&quot;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以上。</p>
+<p>参考：<br><a href="https://github.com/facebook/react-native/issues/6875" target="_blank" rel="noopener">ReactNative ISSUE6875</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="/code/让人烦躁的烂代码.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1143,392 +1542,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="/tools/mac抓包.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="100斤">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="100斤的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/tools/mac抓包.html" itemprop="url">Mac OS使用技巧：抓包</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-10T00:46:21+08:00">
-                2018-01-10
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-08-20T00:21:14+08:00">
-                2018-08-20
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/tools/" itemprop="url" rel="index">
-                    <span itemprop="name">工具</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/tools/mac抓包.html#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::/tools/mac抓包.html" class="cy_cmt_count" data-xid="tools/mac抓包.html" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="踩坑：不能连接USB线"><a href="#踩坑：不能连接USB线" class="headerlink" title="踩坑：不能连接USB线"></a>踩坑：不能连接USB线</h3><p>调试接口的时候经常需要抓包，Windows上用Fiddler，Ubuntu上用Charles。</p>
-<p>用Mac的时候也想用Charles抓包，遇到了一些问题。连的是同一个WIFI,但是ping ip地址timeout。</p>
-<p>最后发现是手机用USB连接了mac的问题。只要拔掉USB线，就可以顺利抓包了。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/tools/mac抓包.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="/tools/mac入门.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="100斤">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="100斤的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/tools/mac入门.html" itemprop="url">Mac OS使用技巧：入门</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-01T23:47:29+08:00">
-                2018-01-01
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-08-20T00:20:57+08:00">
-                2018-08-20
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/tools/" itemprop="url" rel="index">
-                    <span itemprop="name">工具</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/tools/mac入门.html#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::/tools/mac入门.html" class="cy_cmt_count" data-xid="tools/mac入门.html" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="安装应用"><a href="#安装应用" class="headerlink" title="安装应用"></a>安装应用</h3><p>mac的应用安装包格式为dmg，打开之后将app拖入应用程序文件夹就安装成功了。卸载的话，将应用程序文件夹中应用拖入回收站就好了。</p>
-<p><a href="https://jingyan.baidu.com/article/6b97984d9efee81ca2b0bf2f.html" target="_blank" rel="noopener">百度百科：mac安装应用</a></p>
-<h3 id="触摸手势"><a href="#触摸手势" class="headerlink" title="触摸手势"></a>触摸手势</h3><p>macbook基本上不适用鼠标就可以办公，触控板起到了至关重要的作用，它支持非常多的触控手势，可以实现各种功能。</p>
-<p><a href="https://support.apple.com/zh-cn/HT204895" target="_blank" rel="noopener">苹果官网手势指引</a></p>
-<p>也可以进入系统偏好设置-&gt;触控板，调整自己的手势。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1578,7 +1591,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">55</span>
+                <span class="site-state-item-count">57</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1589,7 +1602,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1600,7 +1613,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">75</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

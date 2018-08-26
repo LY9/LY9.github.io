@@ -4,6 +4,46 @@
 
     
   <url>
+    <loc>/bigPlan/100k/100k180824.html</loc>
+    <lastmod>2018-08-26T17:48:57.691Z</lastmod>
+    <data>
+        <display>
+        <title>吃牛肉啊</title>
+        <pubTime>2018-08-24T17:21:39.000Z</pubTime>
+        
+        <tag>100斤计划</tag>
+         
+         
+           
+             
+              <breadCrumb title="100斤增肥计划" url="/categories/100k/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>/bigPlan/100k/100k180825.html</loc>
+    <lastmod>2018-08-26T17:48:51.349Z</lastmod>
+    <data>
+        <display>
+        <title>又吃牛肉了啊</title>
+        <pubTime>2018-08-25T17:34:25.000Z</pubTime>
+        
+        <tag>100斤计划</tag>
+         
+         
+           
+             
+              <breadCrumb title="100斤增肥计划" url="/categories/100k/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>/bug/%E5%A4%A9%E7%8C%AB%E8%B4%AD%E7%89%A9%E8%BD%A6%E9%87%91%E9%A2%9D%E5%BC%82%E5%B8%B8.html</loc>
     <lastmod>2018-08-26T06:26:56.868Z</lastmod>
     <data>
@@ -735,26 +775,6 @@
 
     
   <url>
-    <loc>/android/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%89%8B%E5%8A%BF%E7%BC%A9%E6%94%BE%E7%9A%84Recyclerview.html</loc>
-    <lastmod>2018-08-19T15:59:53.122Z</lastmod>
-    <data>
-        <display>
-        <title>自定义手势缩放的Recyclerview--漫画组件</title>
-        <pubTime>2018-05-01T04:06:19.000Z</pubTime>
-        
-        <tag>自定义手势缩放的Recyclerview--漫画组件</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="/categories/android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>/android/%E8%AE%B0android-studio%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91.html</loc>
     <lastmod>2018-08-19T15:59:53.122Z</lastmod>
     <data>
@@ -815,6 +835,26 @@
 
     
   <url>
+    <loc>/android/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%89%8B%E5%8A%BF%E7%BC%A9%E6%94%BE%E7%9A%84Recyclerview.html</loc>
+    <lastmod>2018-08-19T15:59:53.122Z</lastmod>
+    <data>
+        <display>
+        <title>自定义手势缩放的Recyclerview--漫画组件</title>
+        <pubTime>2018-05-01T04:06:19.000Z</pubTime>
+        
+        <tag>自定义手势缩放的Recyclerview--漫画组件</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="/categories/android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>/android/ubuntuNoPermission.html</loc>
     <lastmod>2018-08-19T15:59:53.121Z</lastmod>
     <data>
@@ -855,26 +895,6 @@
 
     
   <url>
-    <loc>/android/SharedPreference%E5%B0%81%E8%A3%85.html</loc>
-    <lastmod>2018-08-19T15:59:53.120Z</lastmod>
-    <data>
-        <display>
-        <title>SharedPreference不一样的封装</title>
-        <pubTime>2017-10-19T16:38:15.000Z</pubTime>
-        
-        <tag>SharedPreference</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="/categories/android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>/android/SVG-ResourceNotFound.html</loc>
     <lastmod>2018-08-19T15:59:53.120Z</lastmod>
     <data>
@@ -897,16 +917,14 @@
 
     
   <url>
-    <loc>/android/RelativeLayoutAndRTL.html</loc>
-    <lastmod>2018-08-19T15:59:53.119Z</lastmod>
+    <loc>/android/SharedPreference%E5%B0%81%E8%A3%85.html</loc>
+    <lastmod>2018-08-19T15:59:53.120Z</lastmod>
     <data>
         <display>
-        <title>RelativeLayout中TextView适配RTL大坑记录</title>
-        <pubTime>2017-08-07T17:48:16.000Z</pubTime>
+        <title>SharedPreference不一样的封装</title>
+        <pubTime>2017-10-19T16:38:15.000Z</pubTime>
         
-        <tag>RelativeLayout TextView RTL适配</tag>
-         
-        <tag>TextView gravity失效</tag>
+        <tag>SharedPreference</tag>
          
          
            
@@ -927,6 +945,28 @@
         <pubTime>2017-10-17T17:30:38.000Z</pubTime>
         
         <tag>android.app.RemoteServiceException</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="/categories/android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>/android/RelativeLayoutAndRTL.html</loc>
+    <lastmod>2018-08-19T15:59:53.119Z</lastmod>
+    <data>
+        <display>
+        <title>RelativeLayout中TextView适配RTL大坑记录</title>
+        <pubTime>2017-08-07T17:48:16.000Z</pubTime>
+        
+        <tag>RelativeLayout TextView RTL适配</tag>
+         
+        <tag>TextView gravity失效</tag>
          
          
            
