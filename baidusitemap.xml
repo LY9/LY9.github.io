@@ -875,6 +875,26 @@
 
     
   <url>
+    <loc>/android/SharedPreference%E5%B0%81%E8%A3%85.html</loc>
+    <lastmod>2018-08-19T15:59:53.120Z</lastmod>
+    <data>
+        <display>
+        <title>SharedPreference不一样的封装</title>
+        <pubTime>2017-10-19T16:38:15.000Z</pubTime>
+        
+        <tag>SharedPreference</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="/categories/android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>/android/android-studio%E7%9A%84%E5%9D%91%E4%BA%8C.html</loc>
     <lastmod>2018-08-19T15:59:53.120Z</lastmod>
     <data>
@@ -917,14 +937,16 @@
 
     
   <url>
-    <loc>/android/SharedPreference%E5%B0%81%E8%A3%85.html</loc>
-    <lastmod>2018-08-19T15:59:53.120Z</lastmod>
+    <loc>/android/RelativeLayoutAndRTL.html</loc>
+    <lastmod>2018-08-19T15:59:53.119Z</lastmod>
     <data>
         <display>
-        <title>SharedPreference不一样的封装</title>
-        <pubTime>2017-10-19T16:38:15.000Z</pubTime>
+        <title>RelativeLayout中TextView适配RTL大坑记录</title>
+        <pubTime>2017-08-07T17:48:16.000Z</pubTime>
         
-        <tag>SharedPreference</tag>
+        <tag>RelativeLayout TextView RTL适配</tag>
+         
+        <tag>TextView gravity失效</tag>
          
          
            
@@ -945,28 +967,6 @@
         <pubTime>2017-10-17T17:30:38.000Z</pubTime>
         
         <tag>android.app.RemoteServiceException</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="/categories/android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>/android/RelativeLayoutAndRTL.html</loc>
-    <lastmod>2018-08-19T15:59:53.119Z</lastmod>
-    <data>
-        <display>
-        <title>RelativeLayout中TextView适配RTL大坑记录</title>
-        <pubTime>2017-08-07T17:48:16.000Z</pubTime>
-        
-        <tag>RelativeLayout TextView RTL适配</tag>
-         
-        <tag>TextView gravity失效</tag>
          
          
            

@@ -310,6 +310,13 @@
   </url>
   
   <url>
+    <loc>/android/SharedPreference%E5%B0%81%E8%A3%85.html</loc>
+    
+    <lastmod>2018-08-19T15:59:53.120Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>/android/android-studio%E7%9A%84%E5%9D%91%E4%BA%8C.html</loc>
     
     <lastmod>2018-08-19T15:59:53.120Z</lastmod>
@@ -324,21 +331,14 @@
   </url>
   
   <url>
-    <loc>/android/SharedPreference%E5%B0%81%E8%A3%85.html</loc>
-    
-    <lastmod>2018-08-19T15:59:53.120Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>/android/RemoteServiceException.html</loc>
+    <loc>/android/RelativeLayoutAndRTL.html</loc>
     
     <lastmod>2018-08-19T15:59:53.119Z</lastmod>
     
   </url>
   
   <url>
-    <loc>/android/RelativeLayoutAndRTL.html</loc>
+    <loc>/android/RemoteServiceException.html</loc>
     
     <lastmod>2018-08-19T15:59:53.119Z</lastmod>
     
@@ -464,14 +464,14 @@
   </url>
   
   <url>
-    <loc>/categories/index.html</loc>
+    <loc>/book/index.html</loc>
     
     <lastmod>2017-12-15T08:24:54.137Z</lastmod>
     
   </url>
   
   <url>
-    <loc>/book/index.html</loc>
+    <loc>/categories/index.html</loc>
     
     <lastmod>2017-12-15T08:24:54.137Z</lastmod>
     
