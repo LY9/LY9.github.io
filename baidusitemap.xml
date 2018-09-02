@@ -4,6 +4,44 @@
 
     
   <url>
+    <loc>/bug/aiqiyi-bug1.html</loc>
+    <lastmod>2018-09-02T16:59:32.837Z</lastmod>
+    <data>
+        <display>
+        <title>爱奇艺文字截断</title>
+        <pubTime>2018-09-02T16:53:01.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="Bug" url="/categories/bug/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>/tools/cos-hexo.html</loc>
+    <lastmod>2018-09-02T16:48:14.864Z</lastmod>
+    <data>
+        <display>
+        <title>最新实践：利用腾讯云对象存储COS部署HEXO静态博客</title>
+        <pubTime>2018-09-02T16:43:27.000Z</pubTime>
+        
+        <tag>hexo</tag>
+         
+         
+           
+             
+              <breadCrumb title="工具" url="/categories/tools/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>/bug/%E5%A4%A9%E7%8C%AB%E8%B4%AD%E7%89%A9%E8%BD%A6%E9%87%91%E9%A2%9D%E5%BC%82%E5%B8%B8.html</loc>
     <lastmod>2018-09-02T15:35:25.993Z</lastmod>
     <data>
@@ -895,14 +933,16 @@
 
     
   <url>
-    <loc>/android/SharedPreference%E5%B0%81%E8%A3%85.html</loc>
+    <loc>/android/SVG-ResourceNotFound.html</loc>
     <lastmod>2018-08-19T15:59:53.120Z</lastmod>
     <data>
         <display>
-        <title>SharedPreference不一样的封装</title>
-        <pubTime>2017-10-19T16:38:15.000Z</pubTime>
+        <title>SVG踩坑：Resources$NotFoundException File res/drawable-hdpi-v4/</title>
+        <pubTime>2018-08-17T04:51:34.000Z</pubTime>
         
-        <tag>SharedPreference</tag>
+        <tag>SVG</tag>
+         
+        <tag>Resources$NotFoundException</tag>
          
          
            
@@ -915,16 +955,14 @@
 
     
   <url>
-    <loc>/android/SVG-ResourceNotFound.html</loc>
+    <loc>/android/SharedPreference%E5%B0%81%E8%A3%85.html</loc>
     <lastmod>2018-08-19T15:59:53.120Z</lastmod>
     <data>
         <display>
-        <title>SVG踩坑：Resources$NotFoundException File res/drawable-hdpi-v4/</title>
-        <pubTime>2018-08-17T04:51:34.000Z</pubTime>
+        <title>SharedPreference不一样的封装</title>
+        <pubTime>2017-10-19T16:38:15.000Z</pubTime>
         
-        <tag>SVG</tag>
-         
-        <tag>Resources$NotFoundException</tag>
+        <tag>SharedPreference</tag>
          
          
            

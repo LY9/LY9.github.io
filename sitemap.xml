@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>/bug/aiqiyi-bug1.html</loc>
+    
+    <lastmod>2018-09-02T16:59:32.837Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>/tools/cos-hexo.html</loc>
+    
+    <lastmod>2018-09-02T16:48:14.864Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>/bug/%E5%A4%A9%E7%8C%AB%E8%B4%AD%E7%89%A9%E8%BD%A6%E9%87%91%E9%A2%9D%E5%BC%82%E5%B8%B8.html</loc>
     
     <lastmod>2018-09-02T15:35:25.993Z</lastmod>
@@ -317,14 +331,14 @@
   </url>
   
   <url>
-    <loc>/android/SharedPreference%E5%B0%81%E8%A3%85.html</loc>
+    <loc>/android/SVG-ResourceNotFound.html</loc>
     
     <lastmod>2018-08-19T15:59:53.120Z</lastmod>
     
   </url>
   
   <url>
-    <loc>/android/SVG-ResourceNotFound.html</loc>
+    <loc>/android/SharedPreference%E5%B0%81%E8%A3%85.html</loc>
     
     <lastmod>2018-08-19T15:59:53.120Z</lastmod>
     

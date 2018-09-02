@@ -372,6 +372,426 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="/android/没有UI之图标怎么办.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="100斤">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="100斤的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/android/没有UI之图标怎么办.html" itemprop="url">没有UI 之 图标怎么办</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-26T00:14:21+08:00">
+                2017-10-26
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-19T23:59:53+08:00">
+                2018-08-19
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/android/没有UI之图标怎么办.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::/android/没有UI之图标怎么办.html" class="cy_cmt_count" data-xid="android/没有UI之图标怎么办.html" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在项目初期或者个人项目经常会遇到没有UI,需要自己找图标的窘境.</p>
+<p>找图标的网站很多,经常用的有<a href="http://www.iconfont.cn/" target="_blank" rel="noopener">阿里巴巴IconFont</a>,<a href="http://www.easyicon.net" target="_blank" rel="noopener">EasyIcon</a>.IconFont使用更加方便一点,可以调颜色,调尺寸.</p>
+<p>但是每次找完图标放到项目里,就会发现很奇怪.原因有几点:</p>
+<ul>
+<li>图标风格不统一</li>
+<li>图标透明边距不统一</li>
+<li>图标颜色不统一</li>
+</ul>
+<p>解决前两个问题非常简单,从同一套图标找图,套图很重要!!!</p>
+<p>除了从网上找,还可以从android sdk找,本地目录为:</p>
+<pre><code>/sdk/platforms/android-26/data/res/
+26是api版本
+</code></pre><p>在xml中使用事例如下:</p>
+<pre><code>&lt;ImageView
+android:layout_width=&quot;wrap_content&quot;
+android:layout_height=&quot;wrap_content&quot;
+android:src=&quot;@android:drawable/ic_menu_delete&quot;/&gt;
+
+使用@android:drawable/图标名
+</code></pre><p>github上也有<a href="https://github.com/google/material-design-icons" target="_blank" rel="noopener">material-design-icons</a>的套图库.</p>
+<p>图标颜色的问题,可以使用ps 也可以使用代码解决:</p>
+<pre><code>public static void setIconColor(ImageView icon, int r, int g, int b, int a) {
+    float[] colorMatrix = new float[] {
+        0, 0, 0, 0, r, 
+        0, 0, 0, 0, g, 
+        0, 0, 0, 0, b, 
+        0, 0, 0, (float) a / 255, 0};
+    icon.setColorFilter(new ColorMatrixColorFilter(colorMatrix));
+}
+</code></pre><p>以上.</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="/android/SharedPreference封装.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="100斤">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="100斤的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/android/SharedPreference封装.html" itemprop="url">SharedPreference不一样的封装</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-20T00:38:15+08:00">
+                2017-10-20
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-19T23:59:53+08:00">
+                2018-08-19
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/android/SharedPreference封装.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::/android/SharedPreference封装.html" class="cy_cmt_count" data-xid="android/SharedPreference封装.html" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>SharedPreference是android常用的轻量级存储方式,使用非常方便,常用来保存app的一些配置值.</p>
+<p>但是SharedPreference的效率并不高.</p>
+<pre><code>SharedPreferences mSp = context.getSharedPreferences(fileName,MODE_PRIVATE);
+mSp.getInt(KEY_2,DEFAULT);
+mSp.getInt(KEY_1,DEFAULT);
+</code></pre><p>很多app在启动过程中都会去SharedPreference中读取配置值,如上面两行代码.第一行代码执行时间为0-1毫秒忽略不计,第三行代码执行时间也为0-1毫秒,忽略不计.</p>
+<p>但是第二行代码,也就是第一次读取SharedPreference的执行时间与文件中存储的条目数有关.</p>
+<pre><code>//存储简单数据
+100条    10毫秒
+1000条   60毫秒
+10000条  200毫秒
+</code></pre>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/android/SharedPreference封装.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="/tools/还不错的数据素材网站-百度指数.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1138,426 +1558,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="/android/ubuntuNoPermission.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="100斤">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="100斤的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/android/ubuntuNoPermission.html" itemprop="url">Ubuntu adb devices no permissions 问题解决</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-17T23:37:12+08:00">
-                2017-10-17
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-08-19T23:59:53+08:00">
-                2018-08-19
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/android/ubuntuNoPermission.html#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::/android/ubuntuNoPermission.html" class="cy_cmt_count" data-xid="android/ubuntuNoPermission.html" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>问题:</p>
-<pre><code>ubuntu连接一些手机时无法使用adb连接,使用adb devices查看状态为no permissions.
-</code></pre><p>解决:</p>
-<ul>
-<li>拔掉手机,在终端使用lsusb命令</li>
-<li>插上手机,再次使用lsusb命令</li>
-<li><p>找到新增的usb设备</p>
-<p>  例如:Bus 001 Device 010: ID 0bb4:0c87 High Tech Computer Corp.</p>
-</li>
-<li><p>创建在/etc/udev/rules.d目录创建51-android.rules文件</p>
-<p>  touch /etc/udev/rules.d/51-android.rules</p>
-</li>
-<li><p>在新建的文件中写入配置.</p>
-<p>  SUBSYSTEM==”usb”, ATTRS{idVendor}==”0bb4”,MODE=”0666”<br>  (可以同时配置多条,分号隔开)</p>
-</li>
-<li><p>修改文件权限</p>
-<p>  sudo chmod a+rx /etc/udev/rules.d/51-android.rules</p>
-</li>
-<li><p>重启udev,adb</p>
-<p>  sudo service udev restart<br>  重新插拔手机<br>  adb kill-server<br>  adb devices<br>  (如果无效,重启计算机)</p>
-</li>
-</ul>
-<p>以上.</p>
-<p>参考:</p>
-<p>谷歌官方文档:<a href="https://developer.android.com/studio/run/device.html" target="_blank" rel="noopener">https://developer.android.com/studio/run/device.html</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="/code/用脑子想想用不用boolean类型htop.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="100斤">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="100斤的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/code/用脑子想想用不用boolean类型htop.html" itemprop="url">用脑子想想该不该用boolean类型</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-13T01:35:46+08:00">
-                2017-10-13
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-08-20T00:14:15+08:00">
-                2018-08-20
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/code/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/code/用脑子想想用不用boolean类型htop.html#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::/code/用脑子想想用不用boolean类型htop.html" class="cy_cmt_count" data-xid="code/用脑子想想用不用boolean类型htop.html" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>boolean作为java的基本类型,只有两个值,true or false.</p>
-<p>boolean类型的使用与人的简单思考很符合,上班迟到或者不迟到,中午下雨或者不下雨,晚上加班或者不加班,回家打游戏或者不打游戏…等等.</p>
-<p>然而事情并没有这么简单.任何事几乎都可以有一种情况,不知道!!!</p>
-<p>举个代码的例子:</p>
-<pre><code>功能:一个视频列表展示,已收藏的视频显示一个红心,未收藏的显示一个灰色心.,视频列表在服务端,收藏信息在本地数据库.
-
-简单想用一个boolean刚好可以标识两个状态.
-
-编码:
-从服务端获取列表展示.
-展示的几个视频从数据库获取是否收藏,更改图表状态.
-
-上述两个过程都是异步的,也就是在展示的时候并不知道是否收藏.也就是多了一个状态 不知道.
-
-所以即使展示状态只有2个,但是编码过程中真正的状态不止两个.
-</code></pre><p><img src="http://ow0ekshxd.bkt.clouddn.com/not_use_boolean.png" alt="不要使用boolean"></p>
-<p>一旦用boolean限制了状态数,后续重构就会感觉蛋疼了.所以用boolean的时候用脑子好好想想.<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/code/用脑子想想用不用boolean类型htop.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1607,7 +1607,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">57</span>
+                <span class="site-state-item-count">59</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
