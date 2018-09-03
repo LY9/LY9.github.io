@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>/code/googleio2018.html</loc>
+    
+    <lastmod>2018-09-03T15:50:38.058Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>/bug/aiqiyi-bug1.html</loc>
     
     <lastmod>2018-09-02T16:59:32.837Z</lastmod>
@@ -289,14 +296,7 @@
   </url>
   
   <url>
-    <loc>/android/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%89%8B%E5%8A%BF%E7%BC%A9%E6%94%BE%E7%9A%84Recyclerview.html</loc>
-    
-    <lastmod>2018-08-19T15:59:53.122Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>/android/%E6%8D%A2%E4%B8%80%E4%B8%AA%E7%9B%AE%E5%BD%95%E5%86%85%E5%AD%98%E7%9C%8116M%E5%86%85%E5%AD%98.html</loc>
+    <loc>/android/%E8%AE%B0android-studio%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91.html</loc>
     
     <lastmod>2018-08-19T15:59:53.122Z</lastmod>
     
@@ -310,7 +310,14 @@
   </url>
   
   <url>
-    <loc>/android/%E8%AE%B0android-studio%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91.html</loc>
+    <loc>/android/%E6%8D%A2%E4%B8%80%E4%B8%AA%E7%9B%AE%E5%BD%95%E5%86%85%E5%AD%98%E7%9C%8116M%E5%86%85%E5%AD%98.html</loc>
+    
+    <lastmod>2018-08-19T15:59:53.122Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>/android/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%89%8B%E5%8A%BF%E7%BC%A9%E6%94%BE%E7%9A%84Recyclerview.html</loc>
     
     <lastmod>2018-08-19T15:59:53.122Z</lastmod>
     
@@ -324,14 +331,14 @@
   </url>
   
   <url>
-    <loc>/android/android-studio%E7%9A%84%E5%9D%91%E4%BA%8C.html</loc>
+    <loc>/android/SVG-ResourceNotFound.html</loc>
     
     <lastmod>2018-08-19T15:59:53.120Z</lastmod>
     
   </url>
   
   <url>
-    <loc>/android/SVG-ResourceNotFound.html</loc>
+    <loc>/android/android-studio%E7%9A%84%E5%9D%91%E4%BA%8C.html</loc>
     
     <lastmod>2018-08-19T15:59:53.120Z</lastmod>
     
