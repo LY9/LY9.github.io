@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>/code/%E8%8B%B1%E8%AF%AD.html</loc>
+    <lastmod>2018-09-09T07:04:37.751Z</lastmod>
+    <data>
+        <display>
+        <title>英语</title>
+        <pubTime>2017-08-31T16:59:27.000Z</pubTime>
+        
+        <tag>英语</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程" url="/categories/code/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>/code/googleio2018.html</loc>
     <lastmod>2018-09-03T15:50:38.058Z</lastmod>
     <data>
@@ -528,26 +548,6 @@
 
     
   <url>
-    <loc>/code/%E8%8B%B1%E8%AF%AD.html</loc>
-    <lastmod>2018-08-19T16:14:23.439Z</lastmod>
-    <data>
-        <display>
-        <title>英语</title>
-        <pubTime>2017-08-31T16:59:27.000Z</pubTime>
-        
-        <tag>英语</tag>
-         
-         
-           
-             
-              <breadCrumb title="编程" url="/categories/code/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>/code/%E7%94%A8%E8%84%91%E5%AD%90%E6%83%B3%E6%83%B3%E7%94%A8%E4%B8%8D%E7%94%A8boolean%E7%B1%BB%E5%9E%8Bhtop.html</loc>
     <lastmod>2018-08-19T16:14:15.356Z</lastmod>
     <data>
@@ -928,28 +928,6 @@
 
     
   <url>
-    <loc>/android/SVG-ResourceNotFound.html</loc>
-    <lastmod>2018-08-19T15:59:53.120Z</lastmod>
-    <data>
-        <display>
-        <title>SVG踩坑：Resources$NotFoundException File res/drawable-hdpi-v4/</title>
-        <pubTime>2018-08-17T04:51:34.000Z</pubTime>
-        
-        <tag>SVG</tag>
-         
-        <tag>Resources$NotFoundException</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="/categories/android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>/android/android-studio%E7%9A%84%E5%9D%91%E4%BA%8C.html</loc>
     <lastmod>2018-08-19T15:59:53.120Z</lastmod>
     <data>
@@ -978,6 +956,28 @@
         <pubTime>2017-10-19T16:38:15.000Z</pubTime>
         
         <tag>SharedPreference</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="/categories/android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>/android/SVG-ResourceNotFound.html</loc>
+    <lastmod>2018-08-19T15:59:53.120Z</lastmod>
+    <data>
+        <display>
+        <title>SVG踩坑：Resources$NotFoundException File res/drawable-hdpi-v4/</title>
+        <pubTime>2018-08-17T04:51:34.000Z</pubTime>
+        
+        <tag>SVG</tag>
+         
+        <tag>Resources$NotFoundException</tag>
          
          
            
