@@ -1,0 +1,1030 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <!--百度联盟-->
+  <meta name="baidu_union_verify" content="d7e1bc0c80bac90c1eca63619d185426">
+  <meta name="baidu-site-verification" content="hScSUCqeYQ" />
+
+  <!--百度自动推送-->
+  <script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+  </script>
+  
+  <!--
+  google adsense
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-9776659635828776",
+    enable_page_level_ads: true
+  });
+</script>
+  -->
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-9776659635828776",
+    enable_page_level_ads: true
+  });
+  </script>
+
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Git命令,不同阶段,开发不同阶段需要用到的Git命令" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="写在前面基本概念：工作区：改动（增删文件和内容）暂存区：输入命令：git add 改动的文件名，此次改动就放到了‘暂存区’未跟踪的文件（untracked files）：新建的文件，在git add之前的状态 下面是用到的一些占位符：&amp;lt;branch-name&amp;gt;：分支名&amp;lt;message&amp;gt;：描述信息&amp;lt;index&amp;gt;：序号&amp;lt;commit-id&amp;gt;：git lo">
+<meta name="keywords" content="Git命令,不同阶段,开发不同阶段需要用到的Git命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="开发不同阶段需要用到的Git命令">
+<meta property="og:url" content="/git/开发不同阶段需要用到的Git命令.html">
+<meta property="og:site_name" content="100斤的个人博客">
+<meta property="og:description" content="写在前面基本概念：工作区：改动（增删文件和内容）暂存区：输入命令：git add 改动的文件名，此次改动就放到了‘暂存区’未跟踪的文件（untracked files）：新建的文件，在git add之前的状态 下面是用到的一些占位符：&amp;lt;branch-name&amp;gt;：分支名&amp;lt;message&amp;gt;：描述信息&amp;lt;index&amp;gt;：序号&amp;lt;commit-id&amp;gt;：git lo">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-09-09T17:28:06.297Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="开发不同阶段需要用到的Git命令">
+<meta name="twitter:description" content="写在前面基本概念：工作区：改动（增删文件和内容）暂存区：输入命令：git add 改动的文件名，此次改动就放到了‘暂存区’未跟踪的文件（untracked files）：新建的文件，在git add之前的状态 下面是用到的一些占位符：&amp;lt;branch-name&amp;gt;：分支名&amp;lt;message&amp;gt;：描述信息&amp;lt;index&amp;gt;：序号&amp;lt;commit-id&amp;gt;：git lo">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="/git/开发不同阶段需要用到的Git命令.html"/>
+
+
+
+
+
+  <title>开发不同阶段需要用到的Git命令 | 100斤的个人博客</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-105828632-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">100斤的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">心之所向 素履以往</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-loft">
+          <a href="/loft/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-hotel"></i> <br />
+            
+            阁楼
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-project">
+          <a href="/project/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-cubes"></i> <br />
+            
+            项目
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-plan">
+          <a href="/plan/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-street-view"></i> <br />
+            
+            大计划
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-bug">
+          <a href="/categories/bug/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-bug"></i> <br />
+            
+            bug清单
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-book">
+          <a href="/book/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            书籍分享
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="/git/开发不同阶段需要用到的Git命令.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="100斤">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="100斤的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">开发不同阶段需要用到的Git命令</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-10T01:24:13+08:00">
+                2018-09-10
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-09-10T01:28:06+08:00">
+                2018-09-10
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/git/" itemprop="url" rel="index">
+                    <span itemprop="name">Git</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/git/开发不同阶段需要用到的Git命令.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="git/开发不同阶段需要用到的Git命令.html" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>基本概念：<br>工作区：改动（增删文件和内容）<br>暂存区：输入命令：git add 改动的文件名，此次改动就放到了‘暂存区’<br>未跟踪的文件（untracked files）：新建的文件，在git add之前的状态</p>
+<p>下面是用到的一些占位符：<br><code>&lt;branch-name&gt;</code>：分支名<br><code>&lt;message&gt;</code>：描述信息<br><code>&lt;index&gt;</code>：序号<br><code>&lt;commit-id&gt;</code>：<code>git log</code>显示的神秘字符串<br><code>file-path</code>：文件路径<br><a id="more"></a></p>
+<h1 id="开发阶段"><a href="#开发阶段" class="headerlink" title="开发阶段"></a>开发阶段</h1><p>切换分支<br><code>git checkout &lt;branch-name&gt;</code></p>
+<p>创建并且切换至分支<br><code>git checkout -b &lt;branch-name&gt;</code></p>
+<p>将分支推送到远程仓库<br><code>git push origin &lt;branch-name&gt;</code></p>
+<p>将工作区的修改加入暂存区<br><code>git add &lt;file-path&gt;</code></p>
+<p>将当前目录的工作区修改加入暂存区<br><code>git add .</code></p>
+<p>本地提交代码<br><code>git commit -m &lt;message&gt;</code></p>
+<p>存储本地修改<br><code>git stash</code></p>
+<p>恢复本地修改<br><code>git stash pop</code><br><code>git stash apply &lt;index&gt;</code></p>
+<p>修改最近一次提交日志<br><code>git commit --amend</code></p>
+<p>合并最近两次提交<br><code>git rebase –i HEAD~2</code><br>将其中一个pick修改为squash，修改日志，<code>:wq</code>保存，两个commit会合并成一个。</p>
+<h1 id="合并代码"><a href="#合并代码" class="headerlink" title="合并代码"></a>合并代码</h1><p>将另一个分支的代码合入当前分支，不推荐使用<br><code>git merge &lt;branch-name&gt;</code></p>
+<p>将另一个分支的代码合入当前分支，并且保留commit记录<br><code>git merge --no-ff &lt;branch-name&gt;</code></p>
+<p>将另一个分支的代码合入当前分支，并且不保留commit记录<br><code>git merge --squash &lt;branch-name&gt;</code></p>
+<p>将某一笔提交合入当前分支<br><code>git cherry-pick &lt;commit-id&gt;</code></p>
+<p>删除远程分支<br><code>git push origin :&lt;branch-name&gt;</code></p>
+<h1 id="发版阶段"><a href="#发版阶段" class="headerlink" title="发版阶段"></a>发版阶段</h1><p>创建tag<br><code>git tag -a &lt;tag-name&gt; -m &lt;message&gt; &lt;commit-id&gt;</code></p>
+<p>查看branch1有，而branch2没有的commit<br><code>git log &lt;branch-1&gt; ^&lt;branch-2&gt;</code></p>
+<p>查看branch2比branch1多的commit<br><code>git log &lt;branch-1&gt;..&lt;branch-2&gt;</code></p>
+<p>对比branch1与branch2的差异<br><code>git log &lt;branch-1&gt;...&lt;branch-2&gt;</code></p>
+<p>对比branch1与branch2的差异<br><code>git log --left-right &lt;branch-1&gt;...&lt;branch-2&gt;</code></p>
+<h1 id="排查问题"><a href="#排查问题" class="headerlink" title="排查问题"></a>排查问题</h1><p>查看分支上的git操作<br><code>git reflog</code></p>
+<p>查看commit记录<br><code>git log</code></p>
+<p>查看文件每一行的最后修改人/时间/commit id<br><code>git blame &lt;file-path&gt;</code></p>
+<p>查看某个commit的修改<br><code>git show &lt;commit-id&gt;</code></p>
+<p>对比两个commit的差异：<br><code>git diff &lt;commit-id-1&gt; &lt;commit-id-2&gt;</code><br>加号减号表示commit2相对于commit1的增减。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>赞赏还是要有的QAQ</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <!--none改block,默认展开赞赏-->
+    <div id="QR" style="display: block;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechatpay.jpg" alt="100斤 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="100斤 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      100斤
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="/git/开发不同阶段需要用到的Git命令.html" title="开发不同阶段需要用到的Git命令">/git/开发不同阶段需要用到的Git命令.html</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-ND 4.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Git命令/" rel="tag"># Git命令</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/git/git-commond.html" rel="next" title="Git常用命令">
+                <i class="fa fa-chevron-left"></i> Git常用命令
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/git/git逆操作.html" rel="prev" title="Git逆操作/撤销操作">
+                Git逆操作/撤销操作 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="SOHUCS"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="100斤" />
+          <p class="site-author-name" itemprop="name">100斤</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">75</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">84</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://git.oschina.net/50k" target="_blank" title="码云">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  码云
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/PortgasAce" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-nd.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+          <div class ="custom-logo-site-title">
+            <p class="site-state-item-count">请在场的各位给个面子.<br/>——香克斯</p>
+          </div>
+        
+        
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              挺不错的博客
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://coolshell.cn/" title="CodeShell" target="_blank">CodeShell</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x5199;&#x5728;&#x524D;&#x9762;" class="headerlink" title="&#x5199;&#x5728;&#x524D;&#x9762;"></a>&#x5199;&#x5728;&#x524D;&#x9762;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开发阶段"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x5F00;&#x53D1;&#x9636;&#x6BB5;" class="headerlink" title="&#x5F00;&#x53D1;&#x9636;&#x6BB5;"></a>&#x5F00;&#x53D1;&#x9636;&#x6BB5;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#合并代码"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x5408;&#x5E76;&#x4EE3;&#x7801;" class="headerlink" title="&#x5408;&#x5E76;&#x4EE3;&#x7801;"></a>&#x5408;&#x5E76;&#x4EE3;&#x7801;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#发版阶段"><span class="nav-number">4.</span> <span class="nav-text"><a href="#&#x53D1;&#x7248;&#x9636;&#x6BB5;" class="headerlink" title="&#x53D1;&#x7248;&#x9636;&#x6BB5;"></a>&#x53D1;&#x7248;&#x9636;&#x6BB5;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#排查问题"><span class="nav-number">5.</span> <span class="nav-text"><a href="#&#x6392;&#x67E5;&#x95EE;&#x9898;" class="headerlink" title="&#x6392;&#x67E5;&#x95EE;&#x9898;"></a>&#x6392;&#x67E5;&#x95EE;&#x9898;</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">100斤</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytb717ti';
+      var conf = 'cb516d22ac94ff3a17ee9206549de581';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.1"></script>
+
+
+  
+
+</body>
+</html>

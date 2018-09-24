@@ -133,24 +133,24 @@
 <meta property="og:site_name" content="100斤的个人博客">
 <meta property="og:description" content="静态博客网站的需求就是一片足够大的空间，而腾讯云COS提供免费50G的存储空间，无疑是一个不错的选择。本文记录了hexo博客部署的踩坑记录。 标题加了一个最新，因为踩坑的时候搜到一些老文章，不能解决问题，走了一点弯路，浪费时间。本文更新时间为2018.9.1.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://image.fiftykg.com/blog/cos/WX20180902-141726@2x.png">
-<meta property="og:image" content="https://image.fiftykg.com/blog/cos/WX20180902-141825@2x.png">
-<meta property="og:image" content="https://image.fiftykg.com/blog/cos/WX20180902-141924@2x.png">
-<meta property="og:image" content="https://image.fiftykg.com/blog/cos/WX20180902-141947@2x.png">
-<meta property="og:image" content="https://image.fiftykg.com/blog/cos/WX20180902-142142@2x.png">
-<meta property="og:image" content="https://image.fiftykg.com/blog/cos/WX20180902-142336@2x.png">
-<meta property="og:image" content="https://image.fiftykg.com/blog/cos/WX20180902-142950@2x.png">
-<meta property="og:image" content="https://image.fiftykg.com/blog/cos/WX20180902-143210@2x.png">
-<meta property="og:image" content="https://image.fiftykg.com/blog/cos/WX20180902-183101@2x.png">
-<meta property="og:image" content="https://image.fiftykg.com/blog/cos/WX20180902-182126@2x.png">
-<meta property="og:image" content="https://image.fiftykg.com/blog/cos/WX20180902-182852@2x.png">
-<meta property="og:image" content="https://image.fiftykg.com/blog/cos/WX20180902-184622@2x.png">
-<meta property="og:image" content="https://image.fiftykg.com/blog/cos/WX20180902-184118@2x.png">
-<meta property="og:updated_time" content="2018-09-02T16:48:14.864Z">
+<meta property="og:image" content="http://image.fiftykg.com/blog/cos/WX20180902-141726@2x.png">
+<meta property="og:image" content="http://image.fiftykg.com/blog/cos/WX20180902-141825@2x.png">
+<meta property="og:image" content="http://image.fiftykg.com/blog/cos/WX20180902-141924@2x.png">
+<meta property="og:image" content="http://image.fiftykg.com/blog/cos/WX20180902-141947@2x.png">
+<meta property="og:image" content="http://image.fiftykg.com/blog/cos/WX20180902-142142@2x.png">
+<meta property="og:image" content="http://image.fiftykg.com/blog/cos/WX20180902-142336@2x.png">
+<meta property="og:image" content="http://image.fiftykg.com/blog/cos/WX20180902-142950@2x.png">
+<meta property="og:image" content="http://image.fiftykg.com/blog/cos/WX20180902-143210@2x.png">
+<meta property="og:image" content="http://image.fiftykg.com/blog/cos/WX20180902-183101@2x.png">
+<meta property="og:image" content="http://image.fiftykg.com/blog/cos/WX20180902-182126@2x.png">
+<meta property="og:image" content="http://image.fiftykg.com/blog/cos/WX20180902-182852@2x.png">
+<meta property="og:image" content="http://image.fiftykg.com/blog/cos/WX20180902-184622@2x.png">
+<meta property="og:image" content="http://image.fiftykg.com/blog/cos/WX20180902-184118@2x.png">
+<meta property="og:updated_time" content="2018-09-23T05:50:07.760Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="最新实践：利用腾讯云对象存储COS部署HEXO静态博客">
 <meta name="twitter:description" content="静态博客网站的需求就是一片足够大的空间，而腾讯云COS提供免费50G的存储空间，无疑是一个不错的选择。本文记录了hexo博客部署的踩坑记录。 标题加了一个最新，因为踩坑的时候搜到一些老文章，不能解决问题，走了一点弯路，浪费时间。本文更新时间为2018.9.1.">
-<meta name="twitter:image" content="https://image.fiftykg.com/blog/cos/WX20180902-141726@2x.png">
+<meta name="twitter:image" content="http://image.fiftykg.com/blog/cos/WX20180902-141726@2x.png">
 
 
 
@@ -306,7 +306,7 @@
       
         
         <li class="menu-item menu-item-bug">
-          <a href="/categories/bug" rel="section">
+          <a href="/categories/bug/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-bug"></i> <br />
             
@@ -428,8 +428,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-09-03T00:48:14+08:00">
-                2018-09-03
+              <time title="更新于" itemprop="dateModified" datetime="2018-09-23T13:50:07+08:00">
+                2018-09-23
               </time>
             
           </span>
@@ -527,27 +527,27 @@
 <p>标题加了一个最新，因为踩坑的时候搜到一些老文章，不能解决问题，走了一点弯路，浪费时间。本文更新时间为2018.9.1.</p>
 <a id="more"></a>
 <h1 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h1><p>域名注册与备案，略过</p>
-<h1 id="创建存储桶-Bucket"><a href="#创建存储桶-Bucket" class="headerlink" title="创建存储桶(Bucket)"></a>创建存储桶(Bucket)</h1><p><a href="https://console.cloud.tencent.com/cos5/bucket" target="_blank" rel="noopener">COS地址</a></p>
-<p><img src="https://image.fiftykg.com/blog/cos/WX20180902-141726@2x.png" alt="创建桶"></p>
-<p><img src="https://image.fiftykg.com/blog/cos/WX20180902-141825@2x.png" alt="配置权限"></p>
+<h1 id="创建存储桶-Bucket"><a href="#创建存储桶-Bucket" class="headerlink" title="创建存储桶(Bucket)"></a>创建存储桶(Bucket)</h1><p><a href="http://console.cloud.tencent.com/cos5/bucket" target="_blank" rel="noopener">COS地址</a></p>
+<p><img src="http://image.fiftykg.com/blog/cos/WX20180902-141726@2x.png" alt="创建桶"></p>
+<p><img src="http://image.fiftykg.com/blog/cos/WX20180902-141825@2x.png" alt="配置权限"></p>
 <p>填写名称后，选择权限为公有读私有写。</p>
-<h1 id="配置存储桶"><a href="#配置存储桶" class="headerlink" title="配置存储桶"></a>配置存储桶</h1><p>选择基础配置<br><img src="https://image.fiftykg.com/blog/cos/WX20180902-141924@2x.png" alt="选择基础配置"></p>
-<p>编辑静态网站<br><img src="https://image.fiftykg.com/blog/cos/WX20180902-141947@2x.png" alt="编辑静态网站"></p>
-<p>打开设置<br><img src="https://image.fiftykg.com/blog/cos/WX20180902-142142@2x.png" alt="打开设置"></p>
-<h1 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h1><p>域名管理，添加域名，选择静态网站源站<br><img src="https://image.fiftykg.com/blog/cos/WX20180902-142336@2x.png" alt="域名配置"></p>
-<p>域名解析，添加记录<br><img src="https://image.fiftykg.com/blog/cos/WX20180902-142950@2x.png" alt="域名配置"></p>
-<p>第一个框为二级域名，第二个框为记录值。<br><img src="https://image.fiftykg.com/blog/cos/WX20180902-143210@2x.png" alt="域名配置2"></p>
+<h1 id="配置存储桶"><a href="#配置存储桶" class="headerlink" title="配置存储桶"></a>配置存储桶</h1><p>选择基础配置<br><img src="http://image.fiftykg.com/blog/cos/WX20180902-141924@2x.png" alt="选择基础配置"></p>
+<p>编辑静态网站<br><img src="http://image.fiftykg.com/blog/cos/WX20180902-141947@2x.png" alt="编辑静态网站"></p>
+<p>打开设置<br><img src="http://image.fiftykg.com/blog/cos/WX20180902-142142@2x.png" alt="打开设置"></p>
+<h1 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h1><p>域名管理，添加域名，选择静态网站源站<br><img src="http://image.fiftykg.com/blog/cos/WX20180902-142336@2x.png" alt="域名配置"></p>
+<p>域名解析，添加记录<br><img src="http://image.fiftykg.com/blog/cos/WX20180902-142950@2x.png" alt="域名配置"></p>
+<p>第一个框为二级域名，第二个框为记录值。<br><img src="http://image.fiftykg.com/blog/cos/WX20180902-143210@2x.png" alt="域名配置2"></p>
 <h1 id="上传文件测试"><a href="#上传文件测试" class="headerlink" title="上传文件测试"></a>上传文件测试</h1><p>在test存储桶上传<code>CNAME</code>文件和<code>index.html</code>进行测试。</p>
 <p>CANME文件的内容为（域名换成自己的域名）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test.fiftykg.com</span><br></pre></td></tr></table></figure></p>
 <p>index.html的内容为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;zh&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">&lt;title&gt;测试主页&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">测试主页内容</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
-<p>在浏览器中查看结果：<br><img src="https://image.fiftykg.com/blog/cos/WX20180902-183101@2x.png" alt="测试结果"></p>
+<p>在浏览器中查看结果：<br><img src="http://image.fiftykg.com/blog/cos/WX20180902-183101@2x.png" alt="测试结果"></p>
 <h1 id="刷新CDN缓存"><a href="#刷新CDN缓存" class="headerlink" title="刷新CDN缓存"></a>刷新CDN缓存</h1><p>上图的效果是不能立刻看到的，大部分时候需要等待。</p>
-<p>有可能你会看到以下的效果：<br><img src="https://image.fiftykg.com/blog/cos/WX20180902-182126@2x.png" alt="失败的测试结果"></p>
+<p>有可能你会看到以下的效果：<br><img src="http://image.fiftykg.com/blog/cos/WX20180902-182126@2x.png" alt="失败的测试结果"></p>
 <p>首先请确认你的网站类型为<code>静态网站源站</code>。如果设置正确，那么可能需要手动刷新以下cdn的缓存：</p>
-<p><img src="https://image.fiftykg.com/blog/cos/WX20180902-182852@2x.png" alt="测试结果"></p>
+<p><img src="http://image.fiftykg.com/blog/cos/WX20180902-182852@2x.png" alt="测试结果"></p>
 <h1 id="hexo部署"><a href="#hexo部署" class="headerlink" title="hexo部署"></a>hexo部署</h1><p>安装cos部署插件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-cos --save</span><br></pre></td></tr></table></figure></p>
-<p>在根目录的<code>_config.yml</code>配置：<br><img src="https://image.fiftykg.com/blog/cos/WX20180902-184622@2x.png" alt="配置config"></p>
-<p>region等参数可以在下图位置查看：<br><img src="https://image.fiftykg.com/blog/cos/WX20180902-184118@2x.png" alt="参数"></p>
+<p>在根目录的<code>_config.yml</code>配置：<br><img src="http://image.fiftykg.com/blog/cos/WX20180902-184622@2x.png" alt="配置config"></p>
+<p>region等参数可以在下图位置查看：<br><img src="http://image.fiftykg.com/blog/cos/WX20180902-184118@2x.png" alt="参数"></p>
 <p>秘钥可以在<code>访问管理</code>中<code>云API秘密钥</code>中找到。</p>
 <p>参考:</p>
 <p><a href="https://cloud.tencent.com/document/product/436/6249" target="_blank" rel="noopener">腾讯云文档平台-静态网站设置</a></p>
@@ -632,8 +632,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/bigPlan/100k/100k180825.html" rel="next" title="又吃牛肉了啊">
-                <i class="fa fa-chevron-left"></i> 又吃牛肉了啊
+              <a href="/bigPlan/100k/100k1800901.html" rel="next" title="打工的日常-搬家">
+                <i class="fa fa-chevron-left"></i> 打工的日常-搬家
               </a>
             
           </div>
@@ -718,7 +718,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">60</span>
+                <span class="site-state-item-count">75</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -740,7 +740,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">75</span>
+                <span class="site-state-item-count">84</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

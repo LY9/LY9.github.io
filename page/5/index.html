@@ -295,7 +295,7 @@
       
         
         <li class="menu-item menu-item-bug">
-          <a href="/categories/bug" rel="section">
+          <a href="/categories/bug/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-bug"></i> <br />
             
@@ -372,7 +372,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="/code/如何利用github学习.html">
+    <link itemprop="mainEntityOfPage" href="/font_end/react_native/getCurrentActivity.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="100斤">
@@ -391,7 +391,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/code/如何利用github学习.html" itemprop="url">如何利用github学习</a></h2>
+                <a class="post-title-link" href="/font_end/react_native/getCurrentActivity.html" itemprop="url">ReactNative ReactContext#getCurrentActivity解析</a></h2>
         
 
         <div class="post-meta">
@@ -403,8 +403,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-11T21:56:18+08:00">
-                2017-11-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-11T18:15:42+08:00">
+                2018-08-11
               </time>
             
 
@@ -419,7 +419,201 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-08-20T00:13:45+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-17T12:58:19+08:00">
+                2018-08-17
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/reactnative/" itemprop="url" rel="index">
+                    <span itemprop="name">ReactNative</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/font_end/react_native/getCurrentActivity.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::/font_end/react_native/getCurrentActivity.html" class="cy_cmt_count" data-xid="font_end/react_native/getCurrentActivity.html" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>ReactNative与原生混合开发时，原生经常需要为ReactNative提供组件。提供组件时getCurrentActivity使用不当容易造成NullPointerException。</p>
+<p>以下是一个简单的示例分析：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">// 随便一个自定义view，继承自LinearLayout</span><br><span class="line">class CustomView extends LinearLayout&#123;</span><br><span class="line"></span><br><span class="line">public CustomView(Context context) &#123;</span><br><span class="line">super(context);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 提供给Rn的ViewManager</span><br><span class="line">public class CustomViewManager extends SimpleViewManager&lt;CustomView&gt;&#123;</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">public String getName() &#123;</span><br><span class="line">return &quot;CustomView&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">protected CustomView createViewInstance(ThemedReactContext reactContext) &#123;</span><br><span class="line">CustomView customView = new CustomView(reactContext.getCurrentActivity());</span><br><span class="line">return customView;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/font_end/react_native/getCurrentActivity.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="/code/开源的乐趣.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="100斤">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="100斤的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/code/开源的乐趣.html" itemprop="url">开源的乐趣</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-06T12:06:19+08:00">
+                2018-06-06
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-20T00:13:50+08:00">
                 2018-08-20
               </time>
             
@@ -457,8 +651,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/code/如何利用github学习.html#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::/code/如何利用github学习.html" class="cy_cmt_count" data-xid="code/如何利用github学习.html" itemprop="commentsCount" ></span>
+                <a href="/code/开源的乐趣.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::/code/开源的乐趣.html" class="cy_cmt_count" data-xid="code/开源的乐趣.html" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -516,18 +710,10 @@
       
         
           
-            <p>做聚合短视频app的时候,播放器与网站数据解析用到了部分开源技术.用好这些开源技术可以使项目前期进度快非常多,以至于视频项目2周时间就完成了第一个版本.</p>
-<p>这里记录下github高效的使用方式:</p>
-<ul>
-<li><p>watch</p>
-<p>  watch一个github项目后,有任何issue都可以收到邮件,实时关注项目动态.</p>
-</li>
-<li><p>issue</p>
-<p>  项目的事件,包括bug,question等.一些有名的开源项目,几千条issue历史,都是学习的资源.例如leakcanary的issue可以学习内存泄露.</p>
-</li>
-</ul>
-<p>ps:顺带可以学英语</p>
-<p>以上.</p>
+            <p>前段时间写漫画阅读器需要一个缩放的Recyclerview，但是一直没找到相应的控件，于是自己造了一个。为了帮助需要的人就在<a href="https://github.com/PortgasAce/ZoomRecyclerView" target="_blank" rel="noopener">Github</a>扔一个。</p>
+<p>几周过去有十几个start，不算多。但是在star的列表里看到了一个<a href="https://github.com/zhhr1122/z_comic_new" target="_blank" rel="noopener">漫画阅读器</a>，点进去一看，惊喜来了：</p>
+<p><img src="http://ow0ekshxd.bkt.clouddn.com/WechatIMG27.jpeg" alt="thanks"></p>
+<p>就冲这，我的开源之旅将会走的更远！</p>
 
           
         
@@ -571,7 +757,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="/android/没有UI之图标怎么办.html">
+    <link itemprop="mainEntityOfPage" href="/tools/杀鸡用牛刀：Sketch流程图绘制体验.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="100斤">
@@ -590,7 +776,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/android/没有UI之图标怎么办.html" itemprop="url">没有UI 之 图标怎么办</a></h2>
+                <a class="post-title-link" href="/tools/杀鸡用牛刀：Sketch流程图绘制体验.html" itemprop="url">杀鸡用牛刀：Sketch流程图绘制体验</a></h2>
         
 
         <div class="post-meta">
@@ -602,8 +788,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-26T00:14:21+08:00">
-                2017-10-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-10T12:06:19+08:00">
+                2018-05-10
               </time>
             
 
@@ -618,427 +804,7 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-08-19T23:59:53+08:00">
-                2018-08-19
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/android/没有UI之图标怎么办.html#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::/android/没有UI之图标怎么办.html" class="cy_cmt_count" data-xid="android/没有UI之图标怎么办.html" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在项目初期或者个人项目经常会遇到没有UI,需要自己找图标的窘境.</p>
-<p>找图标的网站很多,经常用的有<a href="http://www.iconfont.cn/" target="_blank" rel="noopener">阿里巴巴IconFont</a>,<a href="http://www.easyicon.net" target="_blank" rel="noopener">EasyIcon</a>.IconFont使用更加方便一点,可以调颜色,调尺寸.</p>
-<p>但是每次找完图标放到项目里,就会发现很奇怪.原因有几点:</p>
-<ul>
-<li>图标风格不统一</li>
-<li>图标透明边距不统一</li>
-<li>图标颜色不统一</li>
-</ul>
-<p>解决前两个问题非常简单,从同一套图标找图,套图很重要!!!</p>
-<p>除了从网上找,还可以从android sdk找,本地目录为:</p>
-<pre><code>/sdk/platforms/android-26/data/res/
-26是api版本
-</code></pre><p>在xml中使用事例如下:</p>
-<pre><code>&lt;ImageView
-android:layout_width=&quot;wrap_content&quot;
-android:layout_height=&quot;wrap_content&quot;
-android:src=&quot;@android:drawable/ic_menu_delete&quot;/&gt;
-
-使用@android:drawable/图标名
-</code></pre><p>github上也有<a href="https://github.com/google/material-design-icons" target="_blank" rel="noopener">material-design-icons</a>的套图库.</p>
-<p>图标颜色的问题,可以使用ps 也可以使用代码解决:</p>
-<pre><code>public static void setIconColor(ImageView icon, int r, int g, int b, int a) {
-    float[] colorMatrix = new float[] {
-        0, 0, 0, 0, r, 
-        0, 0, 0, 0, g, 
-        0, 0, 0, 0, b, 
-        0, 0, 0, (float) a / 255, 0};
-    icon.setColorFilter(new ColorMatrixColorFilter(colorMatrix));
-}
-</code></pre><p>以上.</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="/android/SharedPreference封装.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="100斤">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="100斤的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/android/SharedPreference封装.html" itemprop="url">SharedPreference不一样的封装</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-20T00:38:15+08:00">
-                2017-10-20
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-08-19T23:59:53+08:00">
-                2018-08-19
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/android/SharedPreference封装.html#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::/android/SharedPreference封装.html" class="cy_cmt_count" data-xid="android/SharedPreference封装.html" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>SharedPreference是android常用的轻量级存储方式,使用非常方便,常用来保存app的一些配置值.</p>
-<p>但是SharedPreference的效率并不高.</p>
-<pre><code>SharedPreferences mSp = context.getSharedPreferences(fileName,MODE_PRIVATE);
-mSp.getInt(KEY_2,DEFAULT);
-mSp.getInt(KEY_1,DEFAULT);
-</code></pre><p>很多app在启动过程中都会去SharedPreference中读取配置值,如上面两行代码.第一行代码执行时间为0-1毫秒忽略不计,第三行代码执行时间也为0-1毫秒,忽略不计.</p>
-<p>但是第二行代码,也就是第一次读取SharedPreference的执行时间与文件中存储的条目数有关.</p>
-<pre><code>//存储简单数据
-100条    10毫秒
-1000条   60毫秒
-10000条  200毫秒
-</code></pre>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/android/SharedPreference封装.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="/tools/还不错的数据素材网站-百度指数.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="100斤">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="100斤的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/tools/还不错的数据素材网站-百度指数.html" itemprop="url">还不错的数据素材网站-百度指数</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T01:30:05+08:00">
-                2017-10-19
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-08-20T00:22:18+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-20T00:21:50+08:00">
                 2018-08-20
               </time>
             
@@ -1076,8 +842,8 @@ mSp.getInt(KEY_1,DEFAULT);
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/tools/还不错的数据素材网站-百度指数.html#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::/tools/还不错的数据素材网站-百度指数.html" class="cy_cmt_count" data-xid="tools/还不错的数据素材网站-百度指数.html" itemprop="commentsCount" ></span>
+                <a href="/tools/杀鸡用牛刀：Sketch流程图绘制体验.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::/tools/杀鸡用牛刀：Sketch流程图绘制体验.html" class="cy_cmt_count" data-xid="tools/杀鸡用牛刀：Sketch流程图绘制体验.html" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -1134,10 +900,12 @@ mSp.getInt(KEY_1,DEFAULT);
 
       
         
-          <p>写PPT,写文章,吹B等操作,总需要一些数据支撑.<a href="http://index.baidu.com" target="_blank" rel="noopener">百度指数 : http://index.baidu.com</a>就是一个不错的选择.</p>
+          <p>程序流程图是改进工作方法的有效工具。不论作业研究过程中采用何种技术，流程程序图总是必不可少的一步，是应用最普遍的一种工具。绘制流程图的工具很多，Word、ppt、Visio、ProcessOn、XMind等能绘制，但是体验并不好。</p>
+<p>最近试了一下UI神器Sketch，体验超级好。</p>
+<p>页面数据加载的流程图：<br><img src="http://ow0ekshxd.bkt.clouddn.com/sketch_test1.png" alt="sketch"></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/tools/还不错的数据素材网站-百度指数.html#more" rel="contents">
+            <a class="btn" href="/tools/杀鸡用牛刀：Sketch流程图绘制体验.html#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1183,7 +951,7 @@ mSp.getInt(KEY_1,DEFAULT);
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="/android/largeHeap.html">
+    <link itemprop="mainEntityOfPage" href="/git/403.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="100斤">
@@ -1202,7 +970,7 @@ mSp.getInt(KEY_1,DEFAULT);
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/android/largeHeap.html" itemprop="url">android:largeHeap缓解OOM实践</a></h2>
+                <a class="post-title-link" href="/git/403.html" itemprop="url">git push 403</a></h2>
         
 
         <div class="post-meta">
@@ -1214,8 +982,8 @@ mSp.getInt(KEY_1,DEFAULT);
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T00:14:40+08:00">
-                2017-10-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-03T12:06:19+08:00">
+                2018-05-03
               </time>
             
 
@@ -1230,8 +998,8 @@ mSp.getInt(KEY_1,DEFAULT);
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-08-20T00:12:51+08:00">
-                2018-08-20
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-23T12:26:07+08:00">
+                2018-05-23
               </time>
             
           </span>
@@ -1249,8 +1017,8 @@ mSp.getInt(KEY_1,DEFAULT);
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
+                  <a href="/categories/git/" itemprop="url" rel="index">
+                    <span itemprop="name">Git</span>
                   </a>
                 </span>
 
@@ -1268,8 +1036,8 @@ mSp.getInt(KEY_1,DEFAULT);
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/android/largeHeap.html#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::/android/largeHeap.html" class="cy_cmt_count" data-xid="android/largeHeap.html" itemprop="commentsCount" ></span>
+                <a href="/git/403.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::/git/403.html" class="cy_cmt_count" data-xid="git/403.html" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -1326,20 +1094,14 @@ mSp.getInt(KEY_1,DEFAULT);
 
       
         
-          <p>在Android开发中，我们必然遇到过OutOfMemoryError这样的崩溃，产生的原因无外乎两点，一是内存过小不够用，二是程序设计有误，导致不能及时释放内存。在第一种情况的时候我们可以使用android:largeHeap来缓解OutOfMemoryError.</p>
-<p>只需要在manifest的application节点加入<code>android:largeHeap=“true”</code>即可:</p>
-<pre><code>&lt;application 
-    android:icon=&quot;@drawable/icon&quot;
-    android:label=&quot;@string/app_name&quot;
-    android:largeHeap=&quot;true&quot;&gt;
-</code></pre>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/android/largeHeap.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p>最近想做一个学习Android的Demo但是不想放在之前的Github账号上，所以新建了一个账号。git push的时候遇到了403错误。</p>
+<p>解决方法如下:</p>
+<p>1、打开仓库根目录下.git/config文件<br>2、修改url = <a href="https://github.com/PortgasAce/Treasure.git" target="_blank" rel="noopener">https://github.com/PortgasAce/Treasure.git</a> 为<br>url = <a href="https://PortgasAce@github.com/PortgasAce/Treasure.git" target="_blank" rel="noopener">https://PortgasAce@github.com/PortgasAce/Treasure.git</a>  即在url前添加<strong><em>账号@</em></strong></p>
+<p>以上。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://www.cnblogs.com/jarvisjin/p/5915419.html" target="_blank" rel="noopener">git clone时，报403错误，完美解决方案</a></p>
+
+          
         
       
     </div>
@@ -1381,7 +1143,7 @@ mSp.getInt(KEY_1,DEFAULT);
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="/android/RemoteServiceException.html">
+    <link itemprop="mainEntityOfPage" href="/android/自定义手势缩放的Recyclerview.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="100斤">
@@ -1400,7 +1162,7 @@ mSp.getInt(KEY_1,DEFAULT);
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/android/RemoteServiceException.html" itemprop="url">android.app.RemoteServiceException 分析与解决</a></h2>
+                <a class="post-title-link" href="/android/自定义手势缩放的Recyclerview.html" itemprop="url">自定义手势缩放的Recyclerview--漫画组件</a></h2>
         
 
         <div class="post-meta">
@@ -1412,8 +1174,8 @@ mSp.getInt(KEY_1,DEFAULT);
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-18T01:30:38+08:00">
-                2017-10-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-01T12:06:19+08:00">
+                2018-05-01
               </time>
             
 
@@ -1466,8 +1228,8 @@ mSp.getInt(KEY_1,DEFAULT);
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/android/RemoteServiceException.html#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::/android/RemoteServiceException.html" class="cy_cmt_count" data-xid="android/RemoteServiceException.html" itemprop="commentsCount" ></span>
+                <a href="/android/自定义手势缩放的Recyclerview.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::/android/自定义手势缩放的Recyclerview.html" class="cy_cmt_count" data-xid="android/自定义手势缩放的Recyclerview.html" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -1524,10 +1286,205 @@ mSp.getInt(KEY_1,DEFAULT);
 
       
         
-          <p><code>android.app.RemoteServiceException</code>这个异常在线上bug反馈平台频繁上报,但是测试和开发从未复现,放着好久都未解决.细看bug反馈平台的上报趋势和日志后终于找到了解决方案.<br>
+          <h1 id="自定义手势缩放的Recyclerview"><a href="#自定义手势缩放的Recyclerview" class="headerlink" title="自定义手势缩放的Recyclerview"></a>自定义手势缩放的Recyclerview</h1><p>最近做了一个类似腾讯动漫的漫画的阅读器，用Recyclerview作为基础的控件展示漫画。因为漫画需要支持手势缩放，但是原生Recyclerview并不支持，而且开源的缩放Recyclerview也没有找到，只能自己造一个轮子。这篇文章记录了一些思路。</p>
+<p>效果预览图：<a href="https://github.com/PortgasAce/ZoomRecyclerView" target="_blank" rel="noopener">https://github.com/PortgasAce/ZoomRecyclerView</a></p>
+<h1 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h1><p>通过重写Recyclerview的dispatchDraw()方法，操作canvas缩放和平移实现手势缩放功能。如果对矩阵熟练的话，可以给canvas设置矩阵实现，但是我不熟练。。所以只能通过最基本的canvas平移和缩放实现。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">protected void dispatchDraw(@NonNull Canvas canvas) &#123;</span><br><span class="line"></span><br><span class="line">  canvas.save();</span><br><span class="line">  canvas.translate(mTranX, mTranY);</span><br><span class="line">  canvas.scale(mScaleFactor, mScaleFactor);</span><br><span class="line"></span><br><span class="line">  // 所有子view都会缩放和平移</span><br><span class="line">  super.dispatchDraw(canvas);</span><br><span class="line">  canvas.restore();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/android/RemoteServiceException.html#more" rel="contents">
+            <a class="btn" href="/android/自定义手势缩放的Recyclerview.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="/font_end/react_native/ReactNative踩坑-ReactContext-Activity.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="100斤">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="100斤的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/font_end/react_native/ReactNative踩坑-ReactContext-Activity.html" itemprop="url">ReactNative踩坑:ReactContext!=Activity</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-05T12:06:19+08:00">
+                2018-04-05
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-23T12:32:30+08:00">
+                2018-05-23
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/reactnative/" itemprop="url" rel="index">
+                    <span itemprop="name">ReactNative</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/font_end/react_native/ReactNative踩坑-ReactContext-Activity.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::/font_end/react_native/ReactNative踩坑-ReactContext-Activity.html" class="cy_cmt_count" data-xid="font_end/react_native/ReactNative踩坑-ReactContext-Activity.html" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>项目中有一个书架的View提供给ReactNative使用，监听ReactNative相应的生命周期进行界面刷新，代码如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//ViewManager</span><br><span class="line">public class BookShelfManager extends SimpleViewManager&lt;BookShelfView&gt; &#123;</span><br><span class="line">  private BookShelfView mBookShelfView;</span><br><span class="line"></span><br><span class="line">  @Override</span><br><span class="line">  protected BookShelfView createViewInstance(ThemedReactContext reactContext) &#123;</span><br><span class="line">    mBookShelfView = new BookShelfView(reactContext.getCurrentActivity());</span><br><span class="line">    reactContext.addLifecycleEventListener(mBookShelfView);</span><br><span class="line">    mBookShelfView.setReactContext(reactContext);</span><br><span class="line">    return mBookShelfView;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  //...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/font_end/react_native/ReactNative踩坑-ReactContext-Activity.html#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1568,7 +1525,7 @@ mSp.getInt(KEY_1,DEFAULT);
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1613,7 +1570,7 @@ mSp.getInt(KEY_1,DEFAULT);
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">60</span>
+                <span class="site-state-item-count">75</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1635,7 +1592,7 @@ mSp.getInt(KEY_1,DEFAULT);
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">75</span>
+                <span class="site-state-item-count">84</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

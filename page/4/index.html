@@ -295,7 +295,7 @@
       
         
         <li class="menu-item menu-item-bug">
-          <a href="/categories/bug" rel="section">
+          <a href="/categories/bug/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-bug"></i> <br />
             
@@ -372,7 +372,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="/font_end/react_native/ReactNative踩坑：ReactInstanceEventListener内存泄漏.html">
+    <link itemprop="mainEntityOfPage" href="/bigPlan/100k/100k180824.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="100斤">
@@ -391,7 +391,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/font_end/react_native/ReactNative踩坑：ReactInstanceEventListener内存泄漏.html" itemprop="url">ReactNative踩坑：ReactInstanceEventListener内存泄漏</a></h2>
+                <a class="post-title-link" href="/bigPlan/100k/100k180824.html" itemprop="url">吃牛肉啊</a></h2>
         
 
         <div class="post-meta">
@@ -403,8 +403,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-01T11:06:19+08:00">
-                2018-03-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-25T01:21:39+08:00">
+                2018-08-25
               </time>
             
 
@@ -419,8 +419,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-23T12:10:13+08:00">
-                2018-05-23
+              <time title="更新于" itemprop="dateModified" datetime="2018-09-10T23:55:16+08:00">
+                2018-09-10
               </time>
             
           </span>
@@ -438,8 +438,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/reactnative/" itemprop="url" rel="index">
-                    <span itemprop="name">ReactNative</span>
+                  <a href="/categories/100k/" itemprop="url" rel="index">
+                    <span itemprop="name">100斤增肥计划</span>
                   </a>
                 </span>
 
@@ -457,8 +457,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/font_end/react_native/ReactNative踩坑：ReactInstanceEventListener内存泄漏.html#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::/font_end/react_native/ReactNative踩坑：ReactInstanceEventListener内存泄漏.html" class="cy_cmt_count" data-xid="font_end/react_native/ReactNative踩坑：ReactInstanceEventListener内存泄漏.html" itemprop="commentsCount" ></span>
+                <a href="/bigPlan/100k/100k180824.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::/bigPlan/100k/100k180824.html" class="cy_cmt_count" data-xid="bigPlan/100k/100k180824.html" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -515,18 +515,14 @@
 
       
         
-          
-            <p><img src="http://img.blog.csdn.net/20180206193239135?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMTU2MDI2MzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
-<p>内存走查的时候发现，app退出后堆栈中存在两个闪屏页的Activity，如上图所示。</p>
-<p>导出hprof文件后，重新用AndroidStudio打开，找到SplashActivity如下图：<br><img src="http://img.blog.csdn.net/20180206194503404?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMTU2MDI2MzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
-<p>选择蓝色的这一行Jump to Source</p>
-<p><img src="http://img.blog.csdn.net/20180206195049770?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMTU2MDI2MzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
-<p>出现了如下代码:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">private void createContext() &#123;</span><br><span class="line">  final ReactInstanceManager manager = getReactNativeHost().getReactInstanceManager();</span><br><span class="line">  if (!manager.hasStartedCreatingInitialContext()) &#123;</span><br><span class="line">    manager.addReactInstanceEventListener(new ReactInstanceManager.ReactInstanceEventListener() &#123;</span><br><span class="line">      @Override</span><br><span class="line">      public void onReactContextInitialized(ReactContext context) &#123;</span><br><span class="line">        preLoadBussiness();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    manager.createReactContextInBackground();</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    preLoadBussiness();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这段代码是监听ReactNative初始化，初始化完成后做一些事情。<br>至此大概就猜到是监听器没有反注册导致内存泄漏。</p>
-<p>在Activity的OnDestroy或者preLoadBussiness之前进行反注册就解决了这个内存泄漏。</p>
-
-          
+          <p>翔宇同学在公司的实习快要结束了，周五趁着需求不紧，搓了一顿！<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/bigPlan/100k/100k180824.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -568,7 +564,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="/font_end/react_native/ReactNative踩坑：封装原生UI组件内存泄漏记录.html">
+    <link itemprop="mainEntityOfPage" href="/bug/天猫购物车金额异常.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="100斤">
@@ -587,7 +583,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/font_end/react_native/ReactNative踩坑：封装原生UI组件内存泄漏记录.html" itemprop="url">ReactNative踩坑：封装原生UI组件内存泄漏记录</a></h2>
+                <a class="post-title-link" href="/bug/天猫购物车金额异常.html" itemprop="url">天猫购物车金额异常</a></h2>
         
 
         <div class="post-meta">
@@ -599,222 +595,406 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-26T12:06:19+08:00">
-                2018-02-26
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-23T12:09:26+08:00">
-                2018-05-23
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/reactnative/" itemprop="url" rel="index">
-                    <span itemprop="name">ReactNative</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/font_end/react_native/ReactNative踩坑：封装原生UI组件内存泄漏记录.html#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::/font_end/react_native/ReactNative踩坑：封装原生UI组件内存泄漏记录.html" class="cy_cmt_count" data-xid="font_end/react_native/ReactNative踩坑：封装原生UI组件内存泄漏记录.html" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>项目中初次使用ReactNative，还是处在踩坑阶段。<br>偶然发现，多次打开首页页面会闪，打Log发现项目中封装给React Native使用的原生组件刷新了多次。再看对象实例，发现每次刷新都属于不同实例，内存泄漏了！！！</p>
-<p>刷新监听的事件是 com.facebook.react.bridge.LifecycleEventListener.onHostResume()。也就是页面首次加载和activity resume的时候。</p>
-<p>ViewManager示例代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class SampleViewManager extends SimpleViewManager&lt;SampleView&gt; &#123;</span><br><span class="line"></span><br><span class="line">  @Override</span><br><span class="line">  protected SampleView createViewInstance(ThemedReactContext reactContext) &#123;</span><br><span class="line">    SampleView mSampleView = new SampleView(reactContext.getCurrentActivity());</span><br><span class="line">    reactContext.addLifecycleEventListener(mSampleView);</span><br><span class="line">    mSampleView.setReactContext(reactContext);</span><br><span class="line">    return mSampleView;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @Override</span><br><span class="line">  public String getName() &#123;</span><br><span class="line">    return &quot;SampleView&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>View的代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">public class SampleView extends View implements LifecycleEventListener &#123;</span><br><span class="line"></span><br><span class="line">  private ReactContext mReactContext;</span><br><span class="line"></span><br><span class="line">  public SampleView(Context context) &#123;</span><br><span class="line">    super(context);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  public void setReactContext(ReactContext reactContext)&#123;</span><br><span class="line">    mReactContext = reactContext;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @Override</span><br><span class="line">  public void onHostResume() &#123;</span><br><span class="line">    refresh();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @Override</span><br><span class="line">  public void onHostPause() &#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @Override</span><br><span class="line">  public void onHostDestroy() &#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  private void refresh()&#123;</span><br><span class="line">    //do refresh</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>最后发现的问题就是 常见的一个内存泄漏：监听器内存泄漏。<br>ViewManager中</p>
-<blockquote>
-<p>ReactContext.addLifecycleEventListener(mSampleView);</p>
-</blockquote>
-<p>ReactContext持有了SampleView的引用，并且持有了activity的引用。且比activity生命周期更长。</p>
-<p>解决问题也很简单，在合适的时机反注册监听器。那com.facebook.react.bridge.LifecycleEventListener.onHostDestroy()就是一个不错的时机，即activity onDestroy的时机。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@Override   public void onHostDestroy() &#123;</span><br><span class="line">  mReactContext.removeLifecycleEventListener(this);   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="/android/2018年移动端开发的改变.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="100斤">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="100斤的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/android/2018年移动端开发的改变.html" itemprop="url">2018年移动端开发需要改变</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-11T01:17:23+08:00">
-                2018-01-11
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-08-20T00:11:57+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-20T00:43:42+08:00">
                 2018-08-20
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-09-10T23:55:14+08:00">
+                2018-09-10
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/bug/" itemprop="url" rel="index">
+                    <span itemprop="name">Bug</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/bug/天猫购物车金额异常.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::/bug/天猫购物车金额异常.html" class="cy_cmt_count" data-xid="bug/天猫购物车金额异常.html" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="http://image.fiftykg.com/bug/tmall_buy.png" alt="天猫购物车金额显示异常"></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="/font_end/react_native/理解npm-run.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="100斤">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="100斤的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/font_end/react_native/理解npm-run.html" itemprop="url">理解npm run</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-18T12:09:59+08:00">
+                2018-08-18
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-20T00:15:05+08:00">
+                2018-08-20
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/reactnative/" itemprop="url" rel="index">
+                    <span itemprop="name">ReactNative</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/font_end/react_native/理解npm-run.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::/font_end/react_native/理解npm-run.html" class="cy_cmt_count" data-xid="font_end/react_native/理解npm-run.html" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>ReactNative 开发中经常用到一些npm run的命令来打包。最近在这上面踩了一个坑，所以研究了一下。</p>
+<p>在阅文做了两个ReactNative混合开发的项目，都用npm run bundle android打ReactNative的bundle包，再打包Android apk。但是最终的apk里面却有些不同。其中一个apk里的所有svg图片都转换成了不同分辨率的png。检查Android gradle的各种配置没有任何问题，百思不得其解。最后发现是同样是npm run bundle android这条命令，却执行了不同的脚本。</p>
+<h2 id="npm-run的本质"><a href="#npm-run的本质" class="headerlink" title="npm run的本质"></a>npm run的本质</h2><p>npm run是npm run-script的简写，顾名思义就是执行脚本。执行的脚本配置在package.json中的scripts对象。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/font_end/react_native/理解npm-run.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="/android/SVG-ResourceNotFound.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="100斤">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="100斤的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/android/SVG-ResourceNotFound.html" itemprop="url">SVG踩坑：Resources$NotFoundException File res/drawable-hdpi-v4/</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-17T12:51:34+08:00">
+                2018-08-17
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-19T23:59:53+08:00">
+                2018-08-19
               </time>
             
           </span>
@@ -851,8 +1031,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/android/2018年移动端开发的改变.html#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::/android/2018年移动端开发的改变.html" class="cy_cmt_count" data-xid="android/2018年移动端开发的改变.html" itemprop="commentsCount" ></span>
+                <a href="/android/SVG-ResourceNotFound.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::/android/SVG-ResourceNotFound.html" class="cy_cmt_count" data-xid="android/SVG-ResourceNotFound.html" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -909,11 +1089,11 @@
 
       
         
-          <h3 id="现实"><a href="#现实" class="headerlink" title="现实"></a>现实</h3><p>随着大前端时代的来临，移动端开发渐渐衰落。App的主体的页面开发都转移到了前端，甚至是次要的用户设置模块也由前端开发。前端的优势不仅是开发效率高，还有更新成本低。原生移动端想要更新页面就得重新发包，覆盖率低，耗时长。</p>
-<h3 id="方向"><a href="#方向" class="headerlink" title="方向"></a>方向</h3><p>曾经看过Android未来的几个方向，一个是往底层走，一个是往定制化走，还有一个就是往其他岗位走。<br>
+          <p>项目中使用了SVG代替PNG，线上出现了Resources$NotFoundException: File res/drawable-hdpi-v4/xxx.png的异常。</p>
+<p>Crash处的代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">VectorDrawableCompat vectorDrawableCompat</span><br><span class="line">= VectorDrawableCompat</span><br><span class="line">.create(mContext.getResources()</span><br><span class="line">, R.drawable.xxx, null);</span><br><span class="line">mImageView.setImageDrawable(vectorDrawableCompat);</span><br></pre></td></tr></table></figure></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/android/2018年移动端开发的改变.html#more" rel="contents">
+            <a class="btn" href="/android/SVG-ResourceNotFound.html#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -959,7 +1139,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="/tools/mac抓包.html">
+    <link itemprop="mainEntityOfPage" href="/font_end/freecodecamp.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="100斤">
@@ -978,7 +1158,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/tools/mac抓包.html" itemprop="url">Mac OS使用技巧：抓包</a></h2>
+                <a class="post-title-link" href="/font_end/freecodecamp.html" itemprop="url">Github star最多的项目，了解一下！</a></h2>
         
 
         <div class="post-meta">
@@ -990,8 +1170,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-10T00:46:21+08:00">
-                2018-01-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-12T20:36:33+08:00">
+                2018-08-12
               </time>
             
 
@@ -1006,8 +1186,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-08-20T00:21:14+08:00">
-                2018-08-20
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-18T12:16:30+08:00">
+                2018-08-18
               </time>
             
           </span>
@@ -1025,8 +1205,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/tools/" itemprop="url" rel="index">
-                    <span itemprop="name">工具</span>
+                  <a href="/categories/frontend/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
                   </a>
                 </span>
 
@@ -1044,8 +1224,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/tools/mac抓包.html#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::/tools/mac抓包.html" class="cy_cmt_count" data-xid="tools/mac抓包.html" itemprop="commentsCount" ></span>
+                <a href="/font_end/freecodecamp.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::/font_end/freecodecamp.html" class="cy_cmt_count" data-xid="font_end/freecodecamp.html" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -1102,12 +1282,12 @@
 
       
         
-          <h3 id="踩坑：不能连接USB线"><a href="#踩坑：不能连接USB线" class="headerlink" title="踩坑：不能连接USB线"></a>踩坑：不能连接USB线</h3><p>调试接口的时候经常需要抓包，Windows上用Fiddler，Ubuntu上用Charles。</p>
-<p>用Mac的时候也想用Charles抓包，遇到了一些问题。连的是同一个WIFI,但是ping ip地址timeout。</p>
-<p>最后发现是手机用USB连接了mac的问题。只要拔掉USB线，就可以顺利抓包了。</p>
+          <p>FreeCodeCamp(简称：FCC)是<a href="https://github.com/freeCodeCamp/freeCodeCamp" target="_blank" rel="noopener">Github</a>上star最多的项目，截止18年8月有29万star！FCC是最好的前端/全栈学习网站！</p>
+<p>FCC提供了7部分练习：<br>1、Web设计<br>2、JavaScript和数据结构<br>3、常用前端框架<br>4、数据可视化<br>5、Api和微服务<br>6、信息安全<br>7、面试准备</p>
+<p>每一部分都有许多简单的小练习，结尾有大作业。通关每个练习都有积分，完成所有任务能获得证书！！！有木有很激动。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/tools/mac抓包.html#more" rel="contents">
+            <a class="btn" href="/font_end/freecodecamp.html#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1153,7 +1333,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="/tools/mac入门.html">
+    <link itemprop="mainEntityOfPage" href="/workfeel/hongxiu.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="100斤">
@@ -1172,7 +1352,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/tools/mac入门.html" itemprop="url">Mac OS使用技巧：入门</a></h2>
+                <a class="post-title-link" href="/workfeel/hongxiu.html" itemprop="url">红袖添香项目小结</a></h2>
         
 
         <div class="post-meta">
@@ -1184,8 +1364,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-01T23:47:29+08:00">
-                2018-01-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-12T17:24:13+08:00">
+                2018-08-12
               </time>
             
 
@@ -1200,7 +1380,7 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-08-20T00:20:57+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-20T00:22:36+08:00">
                 2018-08-20
               </time>
             
@@ -1219,8 +1399,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/tools/" itemprop="url" rel="index">
-                    <span itemprop="name">工具</span>
+                  <a href="/categories/workfeel/" itemprop="url" rel="index">
+                    <span itemprop="name">工作感悟</span>
                   </a>
                 </span>
 
@@ -1238,8 +1418,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/tools/mac入门.html#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::/tools/mac入门.html" class="cy_cmt_count" data-xid="tools/mac入门.html" itemprop="commentsCount" ></span>
+                <a href="/workfeel/hongxiu.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::/workfeel/hongxiu.html" class="cy_cmt_count" data-xid="workfeel/hongxiu.html" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -1296,205 +1476,11 @@
 
       
         
-          
-            <h3 id="安装应用"><a href="#安装应用" class="headerlink" title="安装应用"></a>安装应用</h3><p>mac的应用安装包格式为dmg，打开之后将app拖入应用程序文件夹就安装成功了。卸载的话，将应用程序文件夹中应用拖入回收站就好了。</p>
-<p><a href="https://jingyan.baidu.com/article/6b97984d9efee81ca2b0bf2f.html" target="_blank" rel="noopener">百度百科：mac安装应用</a></p>
-<h3 id="触摸手势"><a href="#触摸手势" class="headerlink" title="触摸手势"></a>触摸手势</h3><p>macbook基本上不适用鼠标就可以办公，触控板起到了至关重要的作用，它支持非常多的触控手势，可以实现各种功能。</p>
-<p><a href="https://support.apple.com/zh-cn/HT204895" target="_blank" rel="noopener">苹果官网手势指引</a></p>
-<p>也可以进入系统偏好设置-&gt;触控板，调整自己的手势。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="/tools/finder调教.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="100斤">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="100斤的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/tools/finder调教.html" itemprop="url">Mac OS使用技巧：Finder调教</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-01T23:27:55+08:00">
-                2018-01-01
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-08-20T00:20:53+08:00">
-                2018-08-20
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/tools/" itemprop="url" rel="index">
-                    <span itemprop="name">工具</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/tools/finder调教.html#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::/tools/finder调教.html" class="cy_cmt_count" data-xid="tools/finder调教.html" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>finder是Mac OSX中的资源管理器，刚从Windows或者Ubuntu等Linux系统转过去的时候非常不适应，做一些调整后才感觉顺手。</p>
-<h3 id="显示文件路径"><a href="#显示文件路径" class="headerlink" title="显示文件路径"></a>显示文件路径</h3><p>finder目录默认只显示当前所在的文件夹。</p>
-<p>方法一：可以在终端执行以下命令显示路径：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">defaults write com.apple.finder _FXShowPosixPathInTitle -bool TRUE;killall Finder</span><br></pre></td></tr></table></figure></p>
-<p>方法二：finder菜单 -&gt; 显示 -&gt; 显示路径栏<br>
+          <h1 id="红袖添香项目小结"><a href="#红袖添香项目小结" class="headerlink" title="红袖添香项目小结"></a>红袖添香项目小结</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>从5月28创建工程到8月10号内测，两个多月的封闭开发。已经太长时间没有写博客了。最近这几天空闲，回顾了两个月的工作，觉着有必要记录一下。一是年纪大了，记性不好，二是以后回头再看，也许观点已经不同了。</p>
+<p>红袖添香是我到阅文以后的第二个新项目，第一个是元气阅读。两个都是阅文在网文市场垂直深耕的领域，元气阅读是二次元，红袖添香是女性阅读。女性用户一直是一块很大的市场，正如马云在双十一的庆功会上感谢千万女性一样，我们也期待着几个月后的庆功会能有机会感谢一下。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/tools/finder调教.html#more" rel="contents">
+            <a class="btn" href="/workfeel/hongxiu.html#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1535,7 +1521,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1580,7 +1566,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">60</span>
+                <span class="site-state-item-count">75</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1602,7 +1588,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">75</span>
+                <span class="site-state-item-count">84</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
